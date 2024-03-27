@@ -789,6 +789,8 @@ p {
           input,
           select,
           textarea {
+            -webkit-appearance: none;
+            appearance: none;
             background: #212121;
             border: none;
             border-radius: 1.75rem;
