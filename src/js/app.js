@@ -354,7 +354,7 @@ elements.forEach(element => {
 // ? handle-paragraph-intersection.js 
 
 let paragaphOptions = {
-  threshold: 0.5,
+  threshold: 0.45,
 };
 
 function toggleParagraphIntersectingClass(entries) {
