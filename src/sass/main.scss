@@ -328,11 +328,10 @@ h4 {
 p {
   line-height: 2.5;
   opacity: 0;
-  transition: all 380ms ease-in-out;
+  transition: opacity 333ms ease-in-out;
 
   &.intersecting {
     opacity: 1;
-    transition: opacity 380ms ease-in-out 123ms;
   }
 
   &:not(:last-of-type) {
@@ -500,7 +499,6 @@ p {
     .content-container {
       .carousel {
         .carousel-container {
-          opacity: 1;
           transform: translateZ(0) rotateX(0) rotate(0);
         }
       }
@@ -515,11 +513,10 @@ p {
       perspective: 1000px;
 
       .carousel-container {
-        opacity: 0.25;
         perspective-origin: bottom;
-        transform: translateZ(99px) rotateX(45deg) rotateY(9deg);
-        transition: opacity 333ms ease-in-out, transform 333ms ease-in-out;
-        
+        transform: translateZ(99px) rotateX(9deg);
+        transition: transform 333ms ease-in-out;
+
         .carousel-slide:nth-of-type(3) .carousel-image {
           object-fit: contain;
         }
