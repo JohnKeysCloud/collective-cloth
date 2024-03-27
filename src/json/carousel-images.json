@@ -1,0 +1,18 @@
+[
+  {
+    "src": "https://collective-cloth.s3.us-east-2.amazonaws.com/static-assets/carousel_images/carousel-image-1.webp",
+    "alt": "Carousel image 1"
+  },
+  {
+    "src": "https://collective-cloth.s3.us-east-2.amazonaws.com/static-assets/carousel_images/carousel-image-2.webp",
+    "alt": "Carousel image 2"
+  },
+  {
+    "src": "https://collective-cloth.s3.us-east-2.amazonaws.com/static-assets/carousel_images/carousel-image-3.webp",
+    "alt": "Carousel image 3"
+  },
+  {
+    "src": "https://collective-cloth.s3.us-east-2.amazonaws.com/static-assets/carousel_images/carousel-image-4.webp",
+    "alt": "Carousel image 4"
+  }
+]

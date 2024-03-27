@@ -1,0 +1,87 @@
+[
+  {
+    "id": "name",
+    "group": 1,
+    "label": "Enter your full name:",
+    "type": "text",
+    "placeholder": "John Doe"
+  },
+  {
+    "id": "email",
+    "group": 1,
+    "label": "Enter your email address:",
+    "type": "email",
+    "placeholder": "example@email.com"
+  },
+  {
+    "id": "phone",
+    "group": 1,
+    "label": "Enter your phone number:",
+    "type": "tel",
+    "placeholder": "212-555-1234"
+  },
+  {
+    "id": "collective_type",
+    "group": 2,
+    "label": "What type of collective do you represent?",
+    "type": "select",
+    "options": [
+      "Sports/E-Sports Team",
+      "Corporate Entity",
+      "Non-Profit Organization",
+      "Educational Institution",
+      "Special Event Group",
+      "Other"
+    ]
+  },
+  {
+    "id": "garment_type",
+    "group": 2,
+    "label": "Specify garment type:",
+    "type": "select",
+    "options": [
+      "Crewneck T-Shirt",
+      "Tank-Top",
+      "Crewneck Sweater",
+      "Hoodie",
+      "Polo Shirt",
+      "Windbreaker Jacket",
+      "Baseball Cap",
+      "Beanie",
+      "Other"
+    ]
+  },
+  {
+    "id": "color",
+    "group": 2,
+    "label": "In what color?",
+    "type": "select",
+    "options": [
+      "Black",
+      "White",
+      "Grey",
+      "Red",
+      "Green",
+      "Blue",
+      "Yellow",
+      "Orange",
+      "Purple",
+      "Pink",
+      "Other"
+    ]
+  },
+  {
+    "id": "quantity",
+    "group": 2,
+    "label": "How many?",
+    "type": "number",
+    "placeholder": "e.g., 50"
+  },
+  {
+    "id": "vision",
+    "group": 3,
+    "label": "Tell us your vision:",
+    "type": "textarea",
+    "placeholder": "Include details like logo design, placement, unique elements, etc."
+  }
+]

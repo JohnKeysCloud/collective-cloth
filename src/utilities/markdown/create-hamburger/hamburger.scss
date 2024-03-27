@@ -1,0 +1,61 @@
+// ? Set color of nav toggle button bars
+// * --nav-toggle-button-bar-color: white;
+
+.nav-toggle-button {
+  --nav-toggle-button-bar-color: white;
+  $button-height: 20px;
+  $button-width: 20px;
+  $button-bar-size: 1.5px;
+  $button-bar-border-radius: 100vw;
+  $button-transition-time: 150ms; 
+
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: $button-height;
+  justify-content: center;
+  width: $button-width;
+
+  .nav-toggle-bars, .nav-toggle-bars::before, .nav-toggle-bars::after {
+    transition: all $button-transition-time ease-in-out;
+  }
+  
+  &.active {
+    .nav-toggle-bars {
+      background: transparent;
+      
+      &::before {
+        transform: translateY(0) rotate(-45deg);
+      }
+      &::after {
+        transform: translateY(0) rotate(45deg);
+      }
+    }
+  }
+
+  .nav-toggle-bars {
+    background: var(--nav-toggle-button-bar-color);
+    border-radius: $button-bar-border-radius;
+    height: $button-bar-size;
+    position: relative;
+    width: 100%;
+
+    &::before, &::after {
+      background-color: var(--nav-toggle-button-bar-color);
+      border-radius: $button-bar-border-radius;
+      content: '';
+      position: absolute;
+      inset: 0;
+      height: $button-bar-size;
+      width: 100%;
+    }
+
+    &::before {
+      transform: translateY(calc(($button-height - $button-bar-size * 3) / -2 ));
+    }
+
+    &::after {
+      transform: translateY(calc(($button-height - $button-bar-size * 3) / 2 ));
+    }
+  }
+}
