@@ -16,6 +16,7 @@
 
   // *  COLORS
   --background-color: rgb(33, 33, 33);
+  --color-text-primary: whitesmoke;
 
   --cyclone-silver: hsl(0, 0%, 87%);
   --neon-pink: rgb(255, 10, 210);
@@ -34,11 +35,13 @@
 }
 
 :focus-visible {
-  outline: 3px ridge var(--cyclone-silver);
+  outline: 2px ridge var(--neon-orange);
+  outline-offset: 3px;
 }
 
 body {
   background: var(--background-color);
+  color: var(--color-text-primary);
   font-size: var(--body-fs);
 
   &:has(#start-the-process-button.intersecting) {
@@ -83,7 +86,7 @@ header {
       }
 
       #header-logo-text {
-        color: whitesmoke;
+        color: var(--color-text-primary);
         text-shadow: 0 0 0.25rem var(--neon-blue);
       }
     }
@@ -182,7 +185,7 @@ nav {
       a {
         border-radius: inherit;
         display: inline-block;
-        color: whitesmoke;
+        color: var(--color-text-primary);
         padding-block: 0.75rem;
         height: 100%;
         text-align: center;
@@ -251,7 +254,7 @@ footer {
 
     #footer-logo {
       display: inline-block;
-      filter: drop-shadow(0 0 1px whitesmoke);
+      filter: drop-shadow(0 0 1px var(--color-text-primary));
       margin-bottom: 1rem;
       opacity: 0.33;
       position: relative;
@@ -313,6 +316,7 @@ h2 {
 }
 
 h3 {
+  color: var(--color-text-primary);
   font-size: var(--h3-fs);
   font-weight: bold;
   line-height: 1;
@@ -330,6 +334,7 @@ h4 {
 }
 
 p {
+  color: var(--color-text-primary);
   line-height: 2.5;
   opacity: 0;
   transition: opacity 333ms ease-in-out;
@@ -565,6 +570,7 @@ p {
         }
 
         .step-number {
+          color: var(--color-text-primary);
           font-size: 2.7rem;
         }
       }
@@ -725,8 +731,8 @@ p {
       #dialog-close-button {
         line-height: 1;
         font-size: 1.5rem;
+        color: var(--color-text-primary);
         cursor: pointer;
-        // padding: 1rem;
         position: relative;
         transition: all 123ms ease-in-out;
 
@@ -780,6 +786,7 @@ p {
           height: 100%;
 
           label {
+            color: var(--color-text-primary);
             font-size: var(--body-fs);
             text-transform: lowercase;
             text-align: center;
@@ -796,6 +803,7 @@ p {
             border-radius: 1.75rem;
             box-shadow: inset 10px 10px 24px #131313,
               inset -10px -10px 24px #2f2f2f;
+            color: var(--color-text-primary);
             font-family: 'Courier New', Courier, monospace;
             padding: 0.5rem 1.5rem;
             text-align: center;
@@ -808,7 +816,8 @@ p {
 
             &:focus,
             &:focus-visible {
-              outline: 2px ridge var(--cyclone-silver);
+              outline: 1px ridge var(--neon-orange);
+              outline-offset: -3px;
             }
           }
 
@@ -816,7 +825,7 @@ p {
             color: gray;
 
             &.valid {
-              color: whitesmoke;
+              color: var(--color-text-primary);
             }
           }
 
@@ -850,6 +859,7 @@ p {
           background: linear-gradient(145deg, #232323, #1e1e1e);
           border-radius: 100vw;
           box-shadow: 10px 10px 24px #161616, -10px -10px 24px #2c2c2c;
+          color: var(--color-text-primary);
           padding: 0.75rem 1.25rem;
 
           &[disabled] {
