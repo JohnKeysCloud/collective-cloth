@@ -89,7 +89,6 @@ navLinks.forEach((anchor) => {
 
 // ? handle-button-highlight.js
 
-
 const startTheProcessNavLink = document.querySelector('.nav-link[href="#start-the-process"]');
 
 function removeHighlightClass() {
@@ -205,9 +204,7 @@ function toggleDialogTextAnimationClass() {
         letter.classList.add('animate-letter');
       }, 123 * (index + 1));
     });
-
   }
-
 }
 
 function showModal() {
@@ -382,34 +379,61 @@ startProcessButtonObserver.observe(startProcessButton);
 
 // ? handle-screen-size-change.js
 
-function handleScreenSizeChange() {
-  // clientWidth - inner width (ie. the space inside an element including padding but excluding borders and scrollbars)
-  // offsetWidth - outer width (ie. the space occupied by the element, including padding and borders)
-  // scrollWidth - total width including stuff that is only visible if you scroll
-
+function handleNavLinkBehavior() {
   const root = document.documentElement;
   const viewportWidth = root.offsetWidth;
-  const viewportHeight = root.offsetHeight;
 
-  // close nav and remove link listeners
+  const navToggleButton = document.querySelector('.nav-toggle-button');
+
+  if (!navToggleButton) return;
+
   if (viewportWidth > 1024) {
-    const navToggleButton = document.querySelector('.nav-toggle-button');
-
     if (navToggleButton.ariaExpanded === 'true') navToggleButton.click();
     navToggleButton.removeEventListener('click', handleNavToggleButton);
-
-    // uses navLinks variable from handle-navigation.js
-    navLinks.forEach(navLink => {
-      navLink.removeEventListener('click', handleNavPostClick);
-    });
-  } else if (viewportWidth < 1024) {
+    navLinks.forEach(navLink => navLink.removeEventListener('click', handleNavPostClick));
+  } else {
     navToggleButton.addEventListener('click', handleNavToggleButton);
-
-    // uses navLinks variable from handle-navigation.js
-    navLinks.forEach(navLink => {
-      navLink.addEventListener('click', handleNavPostClick);
-    });
+    navLinks.forEach(navLink => navLink.addEventListener('click', handleNavPostClick));
   }
 }
 
-window.addEventListener('resize', handleScreenSizeChange);
+window.addEventListener('load', handleNavLinkBehavior);
+window.addEventListener('resize', handleNavLinkBehavior);
+
+// > --------------------------------------------------------------
+
+// ? the-process-form-validation.js
+
+// function addValidationListener(element) {
+//   const eventType = element.tagName === 'SELECT' ? 'change' : 'input';
+
+//   element.addEventListener(eventType, function () {
+//     const pattern = new RegExp(element.pattern);
+
+//     if (pattern) {
+//       const isValid = pattern.test(element.value.trim());
+//       console.log(isValid); // For debugging
+
+//       // Example of user-visible feedback
+//       if (!isValid) {
+//         element.classList.add('is-invalid'); // Add CSS class for styling
+//         // Optionally, remove class when valid
+//       } else {
+//         element.classList.remove('is-invalid');
+//       }
+//     }
+//   });
+// }
+
+// function validateFieldSet(fieldSet) {
+//   const elements = fieldSet.querySelectorAll('input, select, textarea');
+//   elements.forEach(element => {
+//     addValidationListener(element);
+//   });
+// }
+
+// const fieldSets = document.querySelectorAll('fieldset');
+// fieldSets.forEach(fieldSet => {
+//   validateFieldSet(fieldSet);
+// });
+

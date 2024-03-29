@@ -58,6 +58,14 @@ function createForm(formJson) {
       input.setAttribute('type', field.type);
     }
 
+    if (field.pattern) {
+      input.setAttribute('pattern', field.pattern);
+    }
+
+    if (field.placeholder) {
+      input.setAttribute('placeholder', field.placeholder);
+    }
+
     if (field.required) {
       input.setAttribute('required', 'true');
 
@@ -68,9 +76,6 @@ function createForm(formJson) {
       label.prepend(requiredAsterisk);
     }
 
-    if (field.placeholder) {
-      input.setAttribute('placeholder', field.placeholder);
-    }
 
     const fieldContainer = document.createElement('div');
     fieldContainer.setAttribute('id', `form-field-container-${++index}`);
@@ -102,7 +107,7 @@ function createForm(formJson) {
   const formRequirementText = document.createElement('p');
   formRequirementText.setAttribute('id', 'form-requirement-text');
 
-  
+
   const asteriskSpan = document.createElement('span');
   asteriskSpan.classList.add('asterisk-span');
   asteriskSpan.textContent = '✽';

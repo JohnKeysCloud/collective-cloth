@@ -1,33 +1,35 @@
 [
   {
+    "fieldSet": 1,
     "id": "name",
-    "fieldSet": 1,
-    "label": "Enter your full name:",
-    "type": "text",
+    "label": "Enter your name:",
+    "pattern": "^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$",
     "placeholder": "John Doe",
-    "required": true
+    "required": true,
+    "type": "text"
   },
   {
+    "fieldSet": 1,
     "id": "email",
-    "fieldSet": 1,
     "label": "Enter your email address:",
-    "type": "email",
+    "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$",
     "placeholder": "example@email.com",
-    "required": true
+    "required": true,
+    "type": "email"
   },
   {
-    "id": "phone",
     "fieldSet": 1,
+    "id": "phone",
     "label": "Enter your phone number:",
-    "type": "tel",
+    "pattern": "^\\+?[0-9]{1,3}?[-. ]?([0-9]{2,4}?[-. ]?){1,3}[0-9]{4,6}$",
     "placeholder": "212-555-1234",
-    "required": false
+    "required": false,
+    "type": "tel"
   },
   {
-    "id": "collective_type",
     "fieldSet": 2,
+    "id": "collective_type",
     "label": "What type of collective do you represent?",
-    "type": "select",
     "options": [
       "Sports/E-Sports Team",
       "Corporate Entity",
@@ -36,13 +38,13 @@
       "Special Event Group",
       "Other"
     ],
-    "required": true
+    "required": true,
+    "type": "select"
   },
   {
-    "id": "garment_type",
     "fieldSet": 2,
+    "id": "garment_type",
     "label": "Specify garment type:",
-    "type": "select",
     "options": [
       "Crewneck T-Shirt",
       "Tank-Top",
@@ -54,13 +56,13 @@
       "Beanie",
       "Other"
     ],
-    "required": true
+    "required": true,
+    "type": "select"
   },
   {
-    "id": "color",
     "fieldSet": 2,
+    "id": "color",
     "label": "In what color?",
-    "type": "select",
     "options": [
       "Black",
       "White",
@@ -74,22 +76,23 @@
       "Pink",
       "Other"
     ],
-    "required": true
+    "required": true,
+    "type": "select"
   },
   {
-    "id": "quantity",
     "fieldSet": 2,
+    "id": "quantity",
     "label": "How many?",
-    "type": "number",
     "placeholder": "e.g., 50",
-    "required": true
+    "required": true,
+    "type": "number"
   },
   {
-    "id": "vision",
     "fieldSet": 3,
+    "id": "vision",
     "label": "Tell us your vision:",
-    "type": "textarea",
     "placeholder": "Include details like logo design, placement, unique elements, etc.",
-    "required": true
+    "required": true,
+    "type": "textarea"
   }
 ]
