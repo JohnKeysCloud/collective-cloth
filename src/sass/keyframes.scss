@@ -232,3 +232,21 @@ $nameSpace: 'product-image';
     @include prefixed(transform, translateY(-33px));
   }
 }
+
+@keyframes animate-fieldset-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes animate-fieldset-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

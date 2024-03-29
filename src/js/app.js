@@ -65,7 +65,7 @@ content.appendChild(createFooter(companyInfo));
 
 const navLinks = document.querySelectorAll('a[href^="#"]');
 navLinks.forEach((anchor) => {
-  anchor.addEventListener("click", function(e) {
+  anchor.addEventListener("click", function (e) {
     e.preventDefault();
     const targetId = this.getAttribute("href");
     const targetElement = document.querySelector(targetId);
@@ -120,80 +120,67 @@ const previousButton = document.getElementById('previous-button');
 const nextButton = document.getElementById('next-button');
 
 let formState = {
-  currentFieldGroup: 1,
+  currentFieldSet: 1,
 }
 
 function resetDialog() {
-  console.log('fuck');
   const startTheProcessForm = document.getElementById('start-the-process-form');
   startTheProcessForm.reset();
 
-  if (formState.currentFieldGroup !== 1) {
-    const currentFieldGroup = document.querySelectorAll(`[data-field-group="${formState.currentFieldGroup}"]`);
-    currentFieldGroup.forEach(field => {
-      field.classList.remove('active');
-    });
+  if (formState.currentFieldSet !== 1) {
+    const currentFieldSet = document.querySelector(`[data-field-set="${formState.currentFieldSet}"]`);
+    currentFieldSet.classList.remove('active');
 
-    const fieldGroupOne = document.querySelectorAll(`[data-field-group="1"]`);
-    fieldGroupOne.forEach(field => {
-      field.classList.add('active');
-    });  
+    const fieldSetOne = document.getElementById('field-set-one');
+    fieldSetOne.classList.add('active');
+
+    formState.currentFieldSet = 1;
+    stepNumber.textContent = `Step ${formState.currentFieldSet}`;
+    previousButton.disabled = true;
+    nextButton.disabled = false;
   }
-  
-  formState.currentFieldGroup = 1;
-  stepNumber.textContent = `Step ${formState.currentFieldGroup}`;
-  previousButton.disabled = true;
-  nextButton.disabled = false;
 }
 
 function handleDialogButtons(e) {
   if (e.target.dataset.element !== 'button') return;
-  
-  const button = e.target;  
+
+  const button = e.target;
   const previousButtonClicked = button.textContent === 'previous';
   const nextButtonClicked = button.textContent === 'next';
 
   if (nextButtonClicked) {
-    const currentFieldGroup = document.querySelectorAll(`[data-field-group="${formState.currentFieldGroup}"]`);
-    currentFieldGroup.forEach(field => {
-      field.classList.remove('active');
-    });
-
-    formState.currentFieldGroup += 1;
+    const currentFieldSet = document.querySelector(`[data-field-set="${formState.currentFieldSet}"]`);
+    currentFieldSet.classList.remove('active');
+    formState.currentFieldSet += 1;
   } else if (previousButtonClicked) {
-    const currentFieldGroup = document.querySelectorAll(`[data-field-group="${formState.currentFieldGroup}"]`);
-    currentFieldGroup.forEach(field => {
-      field.classList.remove('active');
-    });
-      
-    formState.currentFieldGroup -= 1;
+    const currentFieldSet = document.querySelector(`[data-field-set="${formState.currentFieldSet}"]`)
+    currentFieldSet.classList.remove('active');
+    formState.currentFieldSet -= 1;
   }
 
-  if (formState.currentFieldGroup === 1) {
+  if (formState.currentFieldSet === 1) {
     previousButton.disabled = true;
   } else {
     previousButton.disabled = false;
   }
-  
-  if (formState.currentFieldGroup === 3) {
+
+  if (formState.currentFieldSet === 3) {
     nextButton.disabled = true;
   } else {
     nextButton.disabled = false;
   }
 
-  stepNumber.textContent = `Step ${formState.currentFieldGroup}`;
+  stepNumber.textContent = `Step ${formState.currentFieldSet}`;
 
-  const newCurrentFieldGroup = document.querySelectorAll(`[data-field-group="${formState.currentFieldGroup}"]`);
-  newCurrentFieldGroup.forEach(field => {
-    field.classList.add('active');
-  });
+  const newCurrentFieldSet = document.querySelector(`[data-field-set="${formState.currentFieldSet}"]`);
+  newCurrentFieldSet.classList.add('active');
 }
 
 function closeModal() {
   startTheProcessDialog.classList.remove('closing');
   startTheProcessDialog.removeEventListener('animationend', closeModal);
   startTheProcessDialog.close();
-  
+
   toggleDialogTextAnimationClass();
 
   closeDialogButton.removeEventListener('click', initiateModalClose);
@@ -213,9 +200,8 @@ function toggleDialogTextAnimationClass() {
       letter.classList.remove('animate-letter');
     });
   } else {
-    dialogSplitText.forEach( (letter, index) => {
+    dialogSplitText.forEach((letter, index) => {
       setTimeout(() => {
-        console.log(letter);
         letter.classList.add('animate-letter');
       }, 123 * (index + 1));
     });
@@ -229,9 +215,9 @@ function showModal() {
 
   const nameField = document.getElementById('name');
   if (nameField) nameField.focus();
-  
+
   toggleDialogTextAnimationClass();
-  
+
   closeDialogButton.addEventListener('click', initiateModalClose);
   dialogButtonContainer.addEventListener('click', handleDialogButtons);
 }
@@ -249,7 +235,7 @@ function handleSelectPlaceholder(e) {
 
   if (selectedOption.disabled === true || selectedOption.value === '') return;
 
-  select.classList.add('valid'); 
+  select.classList.add('valid');
 
 }
 
@@ -266,11 +252,6 @@ function handleNavPostClick() {
   navToggleButton.click();
 }
 
-// uses navLinks variable from handle-navigation.js
-navLinks.forEach(navLink => {
-  navLink.addEventListener('click', handleNavPostClick);
-});
-
 // > --------------------------------------------------------------
 
 // ? split-the-process-heading-text.js
@@ -280,8 +261,7 @@ import { createSplitTextFragment } from './special-effects/split-text.js';
 function splitTheProcessHeadingText() {
   const dialogHeading = document.getElementById('dialog-heading');
   const dialogSplitText = createSplitTextFragment(dialogHeading, 'split-text');
-  console.log(dialogSplitText);
-  
+
   dialogHeading.textContent = '';
 
   dialogHeading.appendChild(dialogSplitText);
@@ -293,10 +273,10 @@ splitTheProcessHeadingText();
 // ? handle-section-intersection.js
 
 let sectionOptions = {
-  threshold: 0.45, 
+  threshold: 0.45,
   // root: (VIEWPORT by default. NOT root element), // ? default is the viewport
 
-  
+
   // > --------------------------------------------------------------
   // > Examples:
 
@@ -322,7 +302,7 @@ let sectionOptions = {
   // ? useful for lazy loading images
   // ? "when our image is 250px away from the viewport, load the image"
   // > --------------------------------------------------------------
-  
+
   // * root: document.querySelector('.card-container'),
   // ? parent element of the element we are observing (the element we are observing is the child)
   // ? we are observing the child element in relation to the parent element
@@ -331,7 +311,6 @@ let sectionOptions = {
 
 function toggleSectionIntersectingClass(entries) {
   entries.forEach(entry => {
-    console.log(entry);
     if (entry.isIntersecting) {
       entry.target.classList.add('intersecting');
       // ? observer.unobserve(entry.target);
@@ -360,7 +339,6 @@ let paragaphOptions = {
 function toggleParagraphIntersectingClass(entries) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      console.log(entry);
       entry.target.classList.add('intersecting');
     } else {
       entry.target.classList.remove('intersecting');
@@ -375,7 +353,7 @@ const paragraphs = document.querySelectorAll('p');
 paragraphs.forEach(Paragraph => {
   paragraphObserver.observe(Paragraph);
 });
-  
+
 // > --------------------------------------------------------------
 
 // ? handle-start-process-intersection.js
@@ -402,3 +380,36 @@ startProcessButtonObserver.observe(startProcessButton);
 
 // > --------------------------------------------------------------
 
+// ? handle-screen-size-change.js
+
+function handleScreenSizeChange() {
+  // clientWidth - inner width (ie. the space inside an element including padding but excluding borders and scrollbars)
+  // offsetWidth - outer width (ie. the space occupied by the element, including padding and borders)
+  // scrollWidth - total width including stuff that is only visible if you scroll
+
+  const root = document.documentElement;
+  const viewportWidth = root.offsetWidth;
+  const viewportHeight = root.offsetHeight;
+
+  // close nav and remove link listeners
+  if (viewportWidth > 1024) {
+    const navToggleButton = document.querySelector('.nav-toggle-button');
+
+    if (navToggleButton.ariaExpanded === 'true') navToggleButton.click();
+    navToggleButton.removeEventListener('click', handleNavToggleButton);
+
+    // uses navLinks variable from handle-navigation.js
+    navLinks.forEach(navLink => {
+      navLink.removeEventListener('click', handleNavPostClick);
+    });
+  } else if (viewportWidth < 1024) {
+    navToggleButton.addEventListener('click', handleNavToggleButton);
+
+    // uses navLinks variable from handle-navigation.js
+    navLinks.forEach(navLink => {
+      navLink.addEventListener('click', handleNavPostClick);
+    });
+  }
+}
+
+window.addEventListener('resize', handleScreenSizeChange);

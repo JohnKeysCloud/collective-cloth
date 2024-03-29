@@ -1,7 +1,6 @@
 @import './cyclone-reset.scss';
 @import './keyframes.scss';
 @import './mixins.scss';
-// @import '~hover.css/scss/hover';
 
 :root {
   // * FONT SIZES
@@ -27,6 +26,8 @@
   --neon-yellow: hsl(60, 100%, 50%);
 
   &.light-mode {
+    --background-color: lightblue; // ! YES
+    --color-text-primary: rgb(33, 33, 33);
   }
 }
 
@@ -547,6 +548,13 @@ p {
     #who-are-we-heading {
       text-align: right;
     }
+
+    #who-are-we-text-content {
+      background: linear-gradient(225deg, #1e1e1e, #232323);
+      border-radius: 45px;
+      box-shadow: -7px 7px 12px #1b1b1b, 7px -7px 12px #272727;
+      padding: 1.75rem 1rem;
+    }
   }
 }
 
@@ -567,11 +575,18 @@ p {
           display: flex;
           gap: 1rem;
           margin-bottom: 0.75rem;
+
+          .step-number {
+            color: var(--color-text-primary);
+            font-size: 2.7rem;
+          }
         }
 
-        .step-number {
-          color: var(--color-text-primary);
-          font-size: 2.7rem;
+        .instruction-text-content {
+          background: #212121;
+          border-radius: 45px;
+          box-shadow: inset -7px 7px 12px #1b1b1b, inset 7px -7px 12px #272727;
+          padding: 0.75rem 1rem;
         }
       }
     }
@@ -769,18 +784,37 @@ p {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 2rem;
+      gap: 1.25rem;
       height: 100%;
 
       #form-field-main-container {
+        align-items: center;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        justify-content: center;
         height: 100%;
+        position: relative;
+
+        fieldset {
+          display: none;
+          flex-direction: column;
+          gap: 1.25rem;
+          height: 100%;
+          width: 100%;
+
+          &.active {
+            animation: animate-fieldset-in 666ms ease-in-out forwards;
+            display: flex;
+          }
+
+          &.closing {
+            animation: animate-fieldset-out 666ms ease-in-out forwards;
+          }
+        }
 
         .form-field-container {
+          display: flex;
           align-items: center;
-          display: none;
           flex-direction: column;
           gap: 0.5rem;
           height: 100%;
@@ -791,6 +825,13 @@ p {
             text-transform: lowercase;
             text-align: center;
             text-shadow: 0px 0px 1px var(--neon-blue);
+
+            .required-asterisk {
+              color: var(--neon-red);
+              line-height: 1;
+              vertical-align: -33px️;
+              text-shadow: 0px 0px 1px var(--neon-red);
+            }
           }
 
           input,
@@ -805,8 +846,6 @@ p {
               inset -10px -10px 24px #2f2f2f;
             color: var(--color-text-primary);
             font-family: 'Courier New', Courier, monospace;
-            padding: 0.5rem 1.5rem;
-            text-align: center;
             text-transform: none;
             width: 100%;
 
@@ -821,6 +860,12 @@ p {
             }
           }
 
+          input,
+          select {
+            padding: 0.5rem 1.5rem;
+            text-align: center;
+          }
+
           select {
             color: gray;
 
@@ -830,23 +875,25 @@ p {
           }
 
           textarea {
+            font-size: 1rem;
             height: 100%;
             overflow: auto; /* Ensures scrollbar appears when needed */
+            padding: 1rem 1.5rem;
             resize: none;
             white-space: pre-wrap;
             word-wrap: break-word; /* Ensures long words do not break the layout */
-          }
-        }
 
-        .form-field-container.active {
-          display: flex;
+            &::placeholder {
+              text-align: center;
+            }
+          }
         }
       }
 
       #dialog-button-container {
         align-items: start;
         display: grid;
-        gap: 2rem;
+        gap: 1.25rem;
         grid-template-areas:
           'previous-button next-button'
           'submit-button submit-button';
@@ -878,6 +925,18 @@ p {
 
         #submit-button {
           grid-area: submit-button;
+        }
+      }
+
+      #form-requirement-text {
+        color: var(--neon-red);
+        line-height: 1;
+        padding-block: 0.5rem;
+        text-shadow: 0 0 0.125rem var(--neon-red);
+
+        .asterisk-span {
+          color: var(--neon-red);
+          font-size: 1.125rem;
         }
       }
     }
@@ -988,11 +1047,13 @@ p {
   }
 
   #who-are-we {
-    #who-are-we-text-content {
-      background: linear-gradient(225deg, #1e1e1e, #232323);
-      border-radius: 144px;
-      box-shadow: -7px 7px 12px #1b1b1b, 7px -7px 12px #272727;
-      padding: 3rem 5rem;
+    .content-container {
+      #who-are-we-text-content {
+        background: linear-gradient(225deg, #1e1e1e, #232323);
+        border-radius: 144px;
+        box-shadow: -7px 7px 12px #1b1b1b, 7px -7px 12px #272727;
+        padding: 3rem 5rem;
+      }
     }
   }
 
@@ -1004,6 +1065,13 @@ p {
           border-radius: 81px;
           box-shadow: inset -7px 7px 12px #1b1b1b, inset 7px -7px 12px #272727;
           padding: 2.5rem;
+
+          .instruction-text-content {
+            background: unset;
+            border-radius: unset;
+            box-shadow: unset;
+            padding: unset;
+          }
         }
       }
     }

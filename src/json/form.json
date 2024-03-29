@@ -1,28 +1,31 @@
 [
   {
     "id": "name",
-    "group": 1,
+    "fieldSet": 1,
     "label": "Enter your full name:",
     "type": "text",
-    "placeholder": "John Doe"
+    "placeholder": "John Doe",
+    "required": true
   },
   {
     "id": "email",
-    "group": 1,
+    "fieldSet": 1,
     "label": "Enter your email address:",
     "type": "email",
-    "placeholder": "example@email.com"
+    "placeholder": "example@email.com",
+    "required": true
   },
   {
     "id": "phone",
-    "group": 1,
+    "fieldSet": 1,
     "label": "Enter your phone number:",
     "type": "tel",
-    "placeholder": "212-555-1234"
+    "placeholder": "212-555-1234",
+    "required": false
   },
   {
     "id": "collective_type",
-    "group": 2,
+    "fieldSet": 2,
     "label": "What type of collective do you represent?",
     "type": "select",
     "options": [
@@ -32,11 +35,12 @@
       "Educational Institution",
       "Special Event Group",
       "Other"
-    ]
+    ],
+    "required": true
   },
   {
     "id": "garment_type",
-    "group": 2,
+    "fieldSet": 2,
     "label": "Specify garment type:",
     "type": "select",
     "options": [
@@ -49,11 +53,12 @@
       "Baseball Cap",
       "Beanie",
       "Other"
-    ]
+    ],
+    "required": true
   },
   {
     "id": "color",
-    "group": 2,
+    "fieldSet": 2,
     "label": "In what color?",
     "type": "select",
     "options": [
@@ -68,20 +73,23 @@
       "Purple",
       "Pink",
       "Other"
-    ]
+    ],
+    "required": true
   },
   {
     "id": "quantity",
-    "group": 2,
+    "fieldSet": 2,
     "label": "How many?",
     "type": "number",
-    "placeholder": "e.g., 50"
+    "placeholder": "e.g., 50",
+    "required": true
   },
   {
     "id": "vision",
-    "group": 3,
+    "fieldSet": 3,
     "label": "Tell us your vision:",
     "type": "textarea",
-    "placeholder": "Include details like logo design, placement, unique elements, etc."
+    "placeholder": "Include details like logo design, placement, unique elements, etc.",
+    "required": true
   }
 ]
