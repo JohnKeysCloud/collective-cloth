@@ -1,6 +1,24 @@
 @import './mixins.scss';
 @import '~hover.css/scss/hover';
 
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes spin {
   0% {
     @include crossBrowserPrefix(transform, rotate(0deg));
@@ -248,5 +266,19 @@ $nameSpace: 'product-image';
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes flash {
+  0%,
+  32%,
+  64%,
+  100% {
+    opacity: 0;
+  }
+  16%,
+  48%,
+  80% {
+    opacity: 1;
   }
 }

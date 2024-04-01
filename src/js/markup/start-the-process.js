@@ -1,10 +1,4 @@
 function createForm(formJson) {
-  const form = document.createElement('form');
-  form.setAttribute('id', 'start-the-process-form');
-
-  const formFieldMainContainer = document.createElement('div');
-  formFieldMainContainer.setAttribute('id', 'form-field-main-container');
-
   const fieldSetOne = document.createElement('fieldset');
   fieldSetOne.setAttribute('id', 'field-set-one');
   fieldSetOne.classList.add('field-set', 'active');
@@ -27,14 +21,14 @@ function createForm(formJson) {
 
     let input;
     if (field.type === 'select') {
-      input = document.createElement('select');
-      input.setAttribute('id', field.id);
-
       const placeholderOption = document.createElement('option');
       placeholderOption.setAttribute('value', '');
       placeholderOption.setAttribute('disabled', 'true');
       placeholderOption.setAttribute('selected', 'true');
       placeholderOption.textContent = 'make a selection';
+
+      input = document.createElement('select');
+      input.setAttribute('id', field.id);
       input.appendChild(placeholderOption);
 
       const options = field.options;
@@ -47,6 +41,8 @@ function createForm(formJson) {
     } else if (field.type === 'textarea') {
       input = document.createElement(field.type);
       input.setAttribute('id', field.id);
+      input.setAttribute('minlength', 222);
+      input.setAttribute('maxlength', 999);
     } else if (field.type === 'number') {
       input = document.createElement('input');
       input.setAttribute('id', field.id);
@@ -59,7 +55,7 @@ function createForm(formJson) {
     }
 
     if (field.pattern) {
-      input.setAttribute('pattern', field.pattern);
+      input.setAttribute('pattern', input.setAttribute('data-pattern', field.pattern));
     }
 
     if (field.placeholder) {
@@ -76,6 +72,9 @@ function createForm(formJson) {
       label.prepend(requiredAsterisk);
     }
 
+    const fieldElementContainer = document.createElement('div');
+    fieldElementContainer.classList.add('field-element-container');
+    fieldElementContainer.append(input);
 
     const fieldContainer = document.createElement('div');
     fieldContainer.setAttribute('id', `form-field-container-${++index}`);
@@ -87,7 +86,7 @@ function createForm(formJson) {
     } else if (field.fieldSet === 3) {
       fieldContainer.dataset.fieldSet = 3;
     }
-    fieldContainer.append(label, input);
+    fieldContainer.append(label, fieldElementContainer);
 
     if (field.fieldSet === 1) {
       fieldSetOne.appendChild(fieldContainer);
@@ -98,27 +97,34 @@ function createForm(formJson) {
     }
   });
 
+  const formRequirementText = document.createElement('p');
+  formRequirementText.setAttribute('id', 'form-requirement-text');
+  const asteriskSpan = document.createElement('span');
+  asteriskSpan.classList.add('asterisk-span');
+  asteriskSpan.textContent = '✽';
+  asteriskSpan.setAttribute('aria-label', 'required field asterisk');
+  const textNodeOne = document.createTextNode(' ＝ required');
+  formRequirementText.append(asteriskSpan, textNodeOne);
+
+  const characterCount = document.createElement('p');
+  characterCount.setAttribute('id', 'character-count');
+  characterCount.textContent = '0/222';
+
+  const formRequirementsContainer = document.createElement('div');
+  formRequirementsContainer.setAttribute('id', 'form-requirements-container');
+  formRequirementsContainer.append(formRequirementText, characterCount);
+
+  const formFieldMainContainer = document.createElement('div');
+  formFieldMainContainer.setAttribute('id', 'form-field-main-container');
   formFieldMainContainer.append(
     fieldSetOne,
     fieldSetTwo,
     fieldSetThree
   );
+  formFieldMainContainer.appendChild(formRequirementsContainer);
 
-  const formRequirementText = document.createElement('p');
-  formRequirementText.setAttribute('id', 'form-requirement-text');
-
-
-  const asteriskSpan = document.createElement('span');
-  asteriskSpan.classList.add('asterisk-span');
-  asteriskSpan.textContent = '✽';
-  asteriskSpan.setAttribute('aria-label', 'required field asterisk');
-
-  const textNodeOne = document.createTextNode(' ＝ required');
-
-  formRequirementText.append(asteriskSpan, textNodeOne);
-
-  formFieldMainContainer.appendChild(formRequirementText);
-
+  const form = document.createElement('form');
+  form.setAttribute('id', 'start-the-process-form');
   form.appendChild(formFieldMainContainer);
 
   return form;
