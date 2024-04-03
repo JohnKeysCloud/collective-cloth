@@ -76,7 +76,8 @@ module.exports = (env, argv) => {
           removeComments: isProduction ? true : false,
         },
         template: './src/index.ejs',
-        // favicon: './src/assets/images/favicon.ico'
+        favicon: './src/assets/media/logos/images/cyclone-c.svg'
+        
       }),
       new MiniCssExtractPlugin({
         filename: 'css/[name].css',
