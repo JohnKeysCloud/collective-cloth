@@ -1,10 +1,9 @@
 
 import { addListener, getAllElements, removeListener, setDisabledState, toggleClass } from "../../utilities/jabascriptz-utilities";
 import { accumulatedFormDataFactory } from "../factories";
-import { collectFormData } from "./handle-form-submission";
+import { collectFormData, getFormattedFormData, makeFetchRequest } from "./handle-form-submission";
 import { dialogElements, swapFieldSet, toggleTextAreaComponents } from "../cache/dialog-elements-and-utilties";
 import { formState } from "./handle-process-modal";
-import { getFormattedFormData } from "./handle-form-submission";
 import { togglePhoneInputSanitizationListener } from "./handle-telephone-input-sanitization";
 import { toggleSelectPlaceholderChangeListener } from "./handle-select-place-holders";
 
@@ -17,8 +16,7 @@ function handleSubmitButtonClick(event, currentFieldSetElement) {
 
   const fullFormData = getFormattedFormData(currentFieldSetElement, accumulatedFormData);
 
-  // TODO: add fetch request here
-  console.log(fullFormData);
+  makeFetchRequest(fullFormData);
 }
 
 function handlePreviousButtonClick(previousFieldSet, toggleTextAreaComponents) {

@@ -70,10 +70,10 @@
       "Red",
       "Green",
       "Blue",
-      "Yellow",
-      "Orange",
       "Purple",
       "Pink",
+      "Yellow",
+      "Orange",
       "Other"
     ],
     "required": true,

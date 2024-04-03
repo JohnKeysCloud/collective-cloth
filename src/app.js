@@ -20,11 +20,3 @@ appInit();
 // > --------------------------------------------------------------
 
 // 💭 playGround
-
-const fuck = document.getElementById('start-the-process-form');
-fuck.addEventListener('submit', function (e) {
-  e.preventDefault();
-  const formData = new FormData(fuck);
-  const formObject = Object.fromEntries(formData);
-  console.log(formObject);
-});

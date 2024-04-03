@@ -1,7 +1,12 @@
 import { formState } from "./handle-process-modal";
 import { getAllElements } from "../../utilities/jabascriptz-utilities";
+import submitForm from "../../../api/submit-form";
 
 // > --------------------------------------------------------------
+
+export function makeFetchRequest(formDataObject) {
+  console.log(formDataObject);
+}
 
 export function getFormattedFormData(currentFieldSetElement, accumulatedFormData) {
   const formData = new FormData;
