@@ -46,7 +46,6 @@ let sectionOptions = {
 };
 const sectionObserver = new IntersectionObserver(toggleIsIntersectingClass, sectionOptions);
 
-// > --------------------------------------------------------------
 
 let paragaphOptions = {
   threshold: 0.45,
@@ -62,10 +61,12 @@ const startProcessButtonObserver = new IntersectionObserver(toggleIsIntersecting
 
 // > --------------------------------------------------------------
 
-export {
-  sectionObserver,
-  paragraphObserver,
-  startProcessButtonObserver,
+export function activateIntersectionObservers() {
+  const sections = document.querySelectorAll('section');
+  const paragraphs = document.querySelectorAll('p');
+  const startProcessButton = document.getElementById('start-the-process-button');
+
+  sections.forEach(section => sectionObserver.observe(section));
+  paragraphs.forEach(paragraph => paragraphObserver.observe(paragraph));
+  startProcessButtonObserver.observe(startProcessButton);
 }
-
-

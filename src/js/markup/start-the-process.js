@@ -29,6 +29,7 @@ function createForm(formJson) {
 
       input = document.createElement('select');
       input.setAttribute('id', field.id);
+      input.setAttribute('name', field.id);
       input.appendChild(placeholderOption);
 
       const options = field.options;
@@ -41,16 +42,19 @@ function createForm(formJson) {
     } else if (field.type === 'textarea') {
       input = document.createElement(field.type);
       input.setAttribute('id', field.id);
-      input.setAttribute('minlength', 222);
+      input.setAttribute('name', field.id);
+      input.setAttribute('minlength', 123);
       input.setAttribute('maxlength', 999);
     } else if (field.type === 'number') {
       input = document.createElement('input');
       input.setAttribute('id', field.id);
+      input.setAttribute('name', field.id);
       input.setAttribute('type', field.type);
       input.setAttribute('min', 1);
     } else {
       input = document.createElement('input');
       input.setAttribute('id', field.id);
+      input.setAttribute('name', field.id);
       input.setAttribute('type', field.type);
     }
 
@@ -108,7 +112,7 @@ function createForm(formJson) {
 
   const characterCount = document.createElement('p');
   characterCount.setAttribute('id', 'character-count');
-  characterCount.textContent = '0/222';
+  characterCount.textContent = '0/123';
 
   const formRequirementsContainer = document.createElement('div');
   formRequirementsContainer.setAttribute('id', 'form-requirements-container');
@@ -164,7 +168,8 @@ function createFormDialog(formJson) {
 
   const submitButton = document.createElement('button');
   submitButton.setAttribute('id', 'submit-button');
-  submitButton.setAttribute('form', '#start-the-process-form');
+  submitButton.setAttribute('form', 'start-the-process-form');
+  submitButton.setAttribute('type', 'submit');
   submitButton.setAttribute('disabled', 'true');
   submitButton.dataset.element = 'button';
   submitButton.textContent = 'submit';

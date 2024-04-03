@@ -1,5 +1,5 @@
 // * UTILITIES
-import { checkTargetElementExistence } from '../../../utilities/check-target-element-existence.js';
+import { checkTargetElementExistence } from '../../utilities/check-target-element-existence.js';
 
 // > ---------------------------------------------------
 

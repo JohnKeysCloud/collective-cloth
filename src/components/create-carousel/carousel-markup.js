@@ -1,6 +1,6 @@
 import './carousel.scss';
 
-import { setAttributes } from '../../../utilities/set-attributes.js';
+import { setAttributes } from '../../utilities/set-attributes.js';
 
 // > --------------------------------------------------------------
 

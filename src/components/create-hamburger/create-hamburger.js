@@ -1,7 +1,7 @@
 import './hamburger.scss';
 
 // * UTILITIES
-import { setAttributes } from '../../../utilities/set-attributes.js';
+import { setAttributes } from '../../utilities/set-attributes.js';
 
 // > ---------------------------------------------------
 

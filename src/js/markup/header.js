@@ -7,7 +7,7 @@ import navListData from '../../json/nav-links.json' with { type: 'json' };
 // * MARKUP UTITLITIES
 import { createNav } from '../../utilities/markdown/create-nav.js';
 import { createImage } from '../../utilities/markdown/create-image.js';
-import { createHamburger } from '../../utilities/markdown/create-hamburger/create-hamburger.js'
+import { createHamburger } from '../../components/create-hamburger/create-hamburger.js';
 
 // > --------------------------------------------------------------
 

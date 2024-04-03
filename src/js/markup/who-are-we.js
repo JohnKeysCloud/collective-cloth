@@ -1,5 +1,7 @@
 // * MARKUP UTITLITIES
-import { createCarousel } from "../../utilities/markdown/create-carousel/carousel-markup";
+import { createCarousel } from '../../components/create-carousel/carousel-markup'
+
+// > --------------------------------------------------------------
 
 /**
  * Element Identifiers:

@@ -1,4 +1,4 @@
-import { handleNavToggleButton } from "../../utilities/markdown/create-hamburger/handle-hamburger";
+import { handleNavToggleButton } from "../../components/create-hamburger/handle-hamburger.js";
 
 // > --------------------------------------------------------------
 
@@ -7,7 +7,7 @@ function handleNavPostClick() {
   navToggleButton.click();
 }
 
-export function handleNavLinkBehavior() {
+export function handleNavLinkPostClick() {
   const root = document.documentElement;
   const viewportWidth = root.offsetWidth;
 
@@ -25,4 +25,3 @@ export function handleNavLinkBehavior() {
     navLinks.forEach(navLink => navLink.addEventListener('click', handleNavPostClick));
   }
 }
-

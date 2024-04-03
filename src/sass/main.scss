@@ -845,7 +845,7 @@ p {
 
             &::before {
               border-radius: inherit;
-              box-shadow: 0 0 9px var(--neon-red);
+              box-shadow: 0 0 18px var(--neon-red);
               content: '';
               opacity: 0;
               inset: 0;
@@ -858,7 +858,7 @@ p {
                 select.is-invalid,
                 textarea.is-invalid
               )::before {
-              animation: flash 1.5s ease-in-out;
+              animation: flash 1.8s ease-in-out;
             }
 
             &:has(textarea) {
@@ -945,11 +945,14 @@ p {
           box-shadow: 10px 10px 24px #161616, -10px -10px 24px #2c2c2c;
           color: var(--color-text-primary);
           padding: 0.75rem 1.25rem;
+          pointer-events: all;
+          transform: scale(1);
           transition: all 333ms ease-in-out;
 
           &[disabled] {
-            cursor: not-allowed;
+            pointer-events: none;
             opacity: 0.5;
+            transform: scale(0);
             visibility: hidden;
           }
         }

@@ -8,8 +8,8 @@
     "dev": "webpack --progress --mode=development",
     "serve": "webpack serve --progress",
     "watch-sass": "sass --watch ./src/sass/main.scss:./src/css/styles.css",
-    "gitpush": "./gitpush.sh",
-    "gitpushnode": "node gitpush.sh"
+    "gitpush": "./_shells/gitpush.sh",
+    "gitpushnode": "node ./_shells/gitpush.js"
   },
   "keywords": [],
   "author": "cycl0n3",
