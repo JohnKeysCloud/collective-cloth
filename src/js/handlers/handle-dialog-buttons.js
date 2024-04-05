@@ -126,9 +126,6 @@ export function handleDialogButtons(event) {
 
     const fullFormData = getFormattedFormData(currentFieldSetElement, accumulatedFormData);
 
-    console.log(96, fullFormData);
-    console.log(96, JSON.stringify(fullFormData));
-
     return JSON.stringify(fullFormData);
   }
 

@@ -38,11 +38,9 @@ export function getFormattedFormData(textAreaFieldset, accumulatedFormData) {
     const fieldData = fieldDataArray[1];
 
     fieldData.forEach(([name, value]) => {
-      formData.append(name, value);
-      console.log(name, value);
+      formData[name] = value;
     });
   }
-
   return formData;
 }
 
@@ -50,8 +48,12 @@ export function collectFormData(currentFieldSetElement) {
   const fields = getAllElements('input, select, textarea', currentFieldSetElement);
 
   const formDataForCurrentFieldset = Array.from(fields)
-    .filter(field => field.name) // ? Filter out fields without names
-    .map(field => [field.name, field.value]);
+    .filter(field => field.name) // Filter out fields without names
+    .map(field => {
+      // Trim the value for inputs and textareas; leave others as is
+      const valueToUse = (field.tagName === 'INPUT' || field.tagName === 'TEXTAREA') ? field.value.trim() : field.value;
+      return [field.name, valueToUse];
+    });
 
   return formDataForCurrentFieldset;
 }
