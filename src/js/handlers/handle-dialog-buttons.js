@@ -1,4 +1,3 @@
-
 import { addListener, getAllElements, removeListener, setDisabledState, toggleClass } from "../../utilities/jabascriptz-utilities";
 import { accumulatedFormDataFactory } from "../factories";
 import { collectFormData, getFormattedFormData, makeFetchRequest } from "./handle-form-submission";
@@ -126,6 +125,9 @@ export function handleDialogButtons(event) {
     event.preventDefault();
 
     const fullFormData = getFormattedFormData(currentFieldSetElement, accumulatedFormData);
+
+    console.log(96, fullFormData);
+    console.log(96, JSON.stringify(fullFormData));
 
     return JSON.stringify(fullFormData);
   }

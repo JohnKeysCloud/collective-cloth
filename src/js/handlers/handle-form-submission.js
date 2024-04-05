@@ -25,13 +25,14 @@ export async function makeFetchRequest(formDataJson) {
   }
 }
 
-export function getFormattedFormData(currentFieldSetElement, accumulatedFormData) {
-  const formData = new FormData;
+export function getFormattedFormData(textAreaFieldset, accumulatedFormData) {
+  const formData = {}
 
-  const dataFromCurrentFieldSet = collectFormData(currentFieldSetElement);
-  accumulatedFormData.updateFieldSetFormData(dataFromCurrentFieldSet, formState.getCurrentFieldSet());
+  const textAreaData = collectFormData(textAreaFieldset);
+  accumulatedFormData.updateFieldSetFormData(textAreaData, formState.getCurrentFieldSet());
 
   const allFieldDataObject = accumulatedFormData.get();
+  console.log(allFieldDataObject);
 
   for (const fieldDataArray of Object.entries(allFieldDataObject)) {
     const fieldData = fieldDataArray[1];
