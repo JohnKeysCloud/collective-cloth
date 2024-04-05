@@ -32,7 +32,6 @@ export function getFormattedFormData(textAreaFieldset, accumulatedFormData) {
   accumulatedFormData.updateFieldSetFormData(textAreaData, formState.getCurrentFieldSet());
 
   const allFieldDataObject = accumulatedFormData.get();
-  console.log(allFieldDataObject);
 
   for (const fieldDataArray of Object.entries(allFieldDataObject)) {
     const fieldData = fieldDataArray[1];
@@ -41,6 +40,7 @@ export function getFormattedFormData(textAreaFieldset, accumulatedFormData) {
       formData[name] = value;
     });
   }
+
   return formData;
 }
 

@@ -125,8 +125,11 @@ export function handleDialogButtons(event) {
     event.preventDefault();
 
     const fullFormData = getFormattedFormData(currentFieldSetElement, accumulatedFormData);
+    const bodyJSON = JSON.stringify(fullFormData);
 
-    return JSON.stringify(fullFormData);
+    console.log(bodyJSON);
+
+    return bodyJSON;
   }
 
   const currentFieldSet = formState.getCurrentFieldSet();
@@ -144,8 +147,8 @@ export function handleDialogButtons(event) {
     handlePreviousButtonClick(currentFieldSet, toggleTextAreaComponents);
     toggleFormListeners(currentFieldSet - 1);
   } else if (clickedButton === submitButton) {
-    const dataJSON = formatDataForSubmission(event, currentFieldSetElement);
-    makeFetchRequest(dataJSON);
+    const bodyJSON = formatDataForSubmission(event, currentFieldSetElement);
+    makeFetchRequest(bodyJSON);
   }
   (currentFieldSet === 1)
     ? togglePhoneInputSanitizationListener('add')
