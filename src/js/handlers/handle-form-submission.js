@@ -8,7 +8,7 @@ export async function makeFetchRequest(formDataObject) {
   const data = Object.fromEntries(formDataObject.entries());
 
   try {
-    const response = await fetch('../../api/submit-form.js', {
+    const response = await fetch('../../api/submit-form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
