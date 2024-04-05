@@ -4,16 +4,14 @@ import submitForm from "../../../api/submit-form";
 
 // > --------------------------------------------------------------
 
-export async function makeFetchRequest(formDataObject) {
-  const data = Object.fromEntries(formDataObject.entries());
-
+export async function makeFetchRequest(formDataJson) {
   try {
     const response = await fetch('/api/submit-form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body: formDataJson,
     });
 
     if (response.ok) {

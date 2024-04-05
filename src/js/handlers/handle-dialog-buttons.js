@@ -11,14 +11,6 @@ import { toggleSelectPlaceholderChangeListener } from "./handle-select-place-hol
 
 let accumulatedFormData = accumulatedFormDataFactory();
 
-function handleSubmitButtonClick(event, currentFieldSetElement) {
-  event.preventDefault();
-
-  const fullFormData = getFormattedFormData(currentFieldSetElement, accumulatedFormData);
-
-  makeFetchRequest(fullFormData);
-}
-
 function handlePreviousButtonClick(previousFieldSet, toggleTextAreaComponents) {
   const previousButton = dialogElements.previousButton();
   const nextButton = dialogElements.nextButton();
@@ -130,6 +122,14 @@ export function handleDialogButtons(event) {
       : toggleSelectPlaceholderChangeListener('remove');
   };
 
+  const formatDataForSubmission = (event, currentFieldSetElement) => {
+    event.preventDefault();
+
+    const fullFormData = getFormattedFormData(currentFieldSetElement, accumulatedFormData);
+
+    return JSON.stringify(fullFormData);
+  }
+
   const currentFieldSet = formState.getCurrentFieldSet();
   const currentFieldSetElement = dialogElements.fieldSet(currentFieldSet);
 
@@ -145,7 +145,8 @@ export function handleDialogButtons(event) {
     handlePreviousButtonClick(currentFieldSet, toggleTextAreaComponents);
     toggleFormListeners(currentFieldSet - 1);
   } else if (clickedButton === submitButton) {
-    handleSubmitButtonClick(event, currentFieldSetElement);
+    const dataJSON = formatDataForSubmission(event, currentFieldSetElement);
+    makeFetchRequest(dataJSON);
   }
   (currentFieldSet === 1)
     ? togglePhoneInputSanitizationListener('add')
