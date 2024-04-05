@@ -4,8 +4,28 @@ import submitForm from "../../../api/submit-form";
 
 // > --------------------------------------------------------------
 
-export function makeFetchRequest(formDataObject) {
-  console.log(formDataObject);
+export async function makeFetchRequest(formDataObject) {
+  const data = Object.fromEntries(formDataObject.entries());
+
+  try {
+    const response = await fetch('../../api/submit-form.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log(1, result.status);
+      console.log(2, result.body);
+    } else {
+      console.error('Server-Side Error - Form submission failed');
+    }
+  } catch (error) {
+    console.error('Fetch Request Error - Form submission:', error);
+  }
 }
 
 export function getFormattedFormData(currentFieldSetElement, accumulatedFormData) {

@@ -91,7 +91,7 @@
     "fieldSet": 3,
     "id": "vision",
     "label": "Tell us your vision:",
-    "placeholder": "Convey your concept 💭 \n 〔 123 character min. 〕 \n \n Interested in an AI generated custom logo? \n \n Where should the designs appear on the garment(s)? \n \n Should all items in a style (e.g., shirts, sweaters, hats) be identical or unique? \n \n Provide as many details as possible about your design preferences and ideas.",
+    "placeholder": "Convey your concept 💭 \n 〔 99 character min. 〕 \n \n Interested in an AI generated custom logo? \n \n Where should the designs appear on the garment(s)? \n \n Should all items in a style (e.g., shirts, sweaters, hats) be identical or unique? \n \n Provide as many details as possible about your design preferences and ideas.",
     "required": true,
     "type": "textarea"
   }

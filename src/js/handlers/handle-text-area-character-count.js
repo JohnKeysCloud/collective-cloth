@@ -11,7 +11,7 @@ export function handleTextAreaCharacterCount(event) {
   const characterCount = dialogElements.characterCount();
 
   const textAreaCharacterCount = textArea.value.trim().length;
-  const minCharacterCount = 123;
+  const minCharacterCount = 99;
   const isTextAreaValid = textAreaCharacterCount >= minCharacterCount;
 
   setCharacterCount();

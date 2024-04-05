@@ -11,7 +11,7 @@ const formState = createFormState();
 
 function resetModal() {
   const resetCharacterCount = () => {
-    dialogElements.characterCount().textContent = '0/123'
+    dialogElements.characterCount().textContent = '0/99'
   };
 
   const currentFieldSet = formState.getCurrentFieldSet();

@@ -47,7 +47,7 @@ export const toggleTextAreaComponents = (action) => {
       'active'
     );
 
-    if (textArea.value.trim().length >= 123) {
+    if (textArea.value.trim().length >= 99) {
       toggleClass(
         characterCount,
         'add',

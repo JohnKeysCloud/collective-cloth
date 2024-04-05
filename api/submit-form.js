@@ -11,6 +11,7 @@ export default async (req, res) => {
       VISION
     } = req.body; // Example fields from your form
 
+    console.log(NAME, EMAIL, PHONE, COLLECTIVE_TYPE, GARMENT_TYPE, COLOR, QUANTITY, VISION);
     // Handle your form submission logic here
     // For example: 
     // Send an email(SendGrid, AWS SES, or NodeMailer with an SMTP server)

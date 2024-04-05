@@ -43,7 +43,7 @@ function createForm(formJson) {
       input = document.createElement(field.type);
       input.setAttribute('id', field.id);
       input.setAttribute('name', field.id);
-      input.setAttribute('minlength', 123);
+      input.setAttribute('minlength', 99);
       input.setAttribute('maxlength', 999);
     } else if (field.type === 'number') {
       input = document.createElement('input');
@@ -112,7 +112,7 @@ function createForm(formJson) {
 
   const characterCount = document.createElement('p');
   characterCount.setAttribute('id', 'character-count');
-  characterCount.textContent = '0/123';
+  characterCount.textContent = '0/99';
 
   const formRequirementsContainer = document.createElement('div');
   formRequirementsContainer.setAttribute('id', 'form-requirements-container');
