@@ -1,6 +1,6 @@
 import { formState } from "./handle-process-modal";
 import { getAllElements } from "../../utilities/jabascriptz-utilities";
-import submitForm from "../../../api/submit-form";
+import submitForm from "../../../dist/api/submit-form";
 
 // > --------------------------------------------------------------
 
