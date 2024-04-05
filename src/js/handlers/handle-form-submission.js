@@ -8,7 +8,7 @@ export async function makeFetchRequest(formDataObject) {
   const data = Object.fromEntries(formDataObject.entries());
 
   try {
-    const response = await fetch('../../api/submit-form', {
+    const response = await fetch('/api/submit-form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -21,10 +21,10 @@ export async function makeFetchRequest(formDataObject) {
       console.log(1, result.status);
       console.log(2, result.body);
     } else {
-      console.error('Server-Side Error - Form submission failed');
+      console.error('Server-side error - form submission failed');
     }
   } catch (error) {
-    console.error('Fetch Request Error - Form submission:', error);
+    console.error('Client-side error - form submission:', error);
   }
 }
 
@@ -35,13 +35,13 @@ export function getFormattedFormData(currentFieldSetElement, accumulatedFormData
   accumulatedFormData.updateFieldSetFormData(dataFromCurrentFieldSet, formState.getCurrentFieldSet());
 
   const allFieldDataObject = accumulatedFormData.get();
-  console.log(allFieldDataObject);
 
   for (const fieldDataArray of Object.entries(allFieldDataObject)) {
     const fieldData = fieldDataArray[1];
 
     fieldData.forEach(([name, value]) => {
       formData.append(name, value);
+      console.log(name, value);
     });
   }
 
