@@ -3,6 +3,15 @@ import { getAllElements } from "../../utilities/jabascriptz-utilities";
 
 // > --------------------------------------------------------------
 
+function updateUI(error) {
+  if (!error) {
+    // Update the UI to show the success
+
+  } else {
+    // Update the UI to show error
+  }
+}
+
 export async function makeFetchRequest(formDataJson) {
   try {
     const response = await fetch('/api/submit-form', {
@@ -12,16 +21,19 @@ export async function makeFetchRequest(formDataJson) {
       },
       body: formDataJson,
     });
-
+    
     if (response.ok) {
       const result = await response.json();
-      console.log(1, result.status);
-      console.log(2, result.body);
+      updateUI();
+      return {success: true, data: result};
     } else {
       console.error('Server-side error - form submission failed');
+      updateUI(result.message || response.statusText);
+      return { success: false, error: result.message };
     }
   } catch (error) {
     console.error('Client-side error - form submission:', error);
+    updateUI(error.message);
   }
 }
 
