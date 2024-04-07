@@ -34,7 +34,7 @@ export default async (req, res) => {
             html: htmlContent,
           };
 
-          await sgMailMail.send(message);
+          await sgMail.send(message);
           console.log('Email Sent');
         } catch (error) {
           console.error('Error sending email:', error);
