@@ -1,6 +1,47 @@
+const fs = require('fs');
+const path = require('path');
+const sgMail = require('@sendgrid/mail');
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+const msg = {
+  to: 'test@example.com', // Change to your recipient
+  from: 'test@example.com', // Change to your verified sender
+  subject: 'Sending with SendGrid is Fun',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+}
+sgMail
+  .send(msg)
+  .then(() => {
+    console.log('Email sent')
+  })
+  .catch((error) => {
+    console.error(error)
+  })
+
+
 export default async (req, res) => {
   if (req.method === 'POST') {
     try {
+
+      const filePath = path.join(__dirname, '..', 'templates', 'email.html');
+      const sendEmailWithHtmlFile = async (toEmail, fromEmail, subject, htmlFilePath) => {
+        try {
+          
+          const message = {
+            to: toEmail,
+            from: fromEmail,
+            subject: subject,
+            html: htmlContent,
+          };
+
+          await sgMailMail.send(message);
+          console.log('Email Sent');
+        } catch (error) {
+          console.error('Error sending email:', error);
+        }
+      }; 
+
       const {
         name,
         email,
@@ -24,6 +65,13 @@ export default async (req, res) => {
         vision
       });
 
+      // > --------------------------------------------------------------
+
+      // 💭 USAGE OF FUNC EXP:
+      sendEmailWithHtmlFile('test@example.com', 'your-email@example.com', 'Sending with SendGrid is Fun', './path/to/your-file.html');
+
+      // > --------------------------------------------------------------
+      
       // Here you could add additional logic such as:
       // - Validating the data
       // - Saving the data to a database
