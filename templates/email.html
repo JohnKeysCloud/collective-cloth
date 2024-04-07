@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Collective Cloth: New Request Recieved</title>
     <!-- googleFonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Major+Mono+Display&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gasoek+One&family=Major+Mono+Display&family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
     <!-- cycloneReset -->
     <style>
       *,
@@ -247,24 +251,24 @@
       }
     </style>
     <!-- emailStyles -->
-    <style>      
+    <style>
       /* 969696969696969696969696969696969696969696969696969696 */
 
       body {
-        font-family: "Major Mono Display", monospace;
+        font-family: 'Major Mono Display', monospace;
         font-optical-sizing: auto;
         font-size: clamp(0.75rem, 1.25vw, 0.813rem);
         background: rgb(33, 33, 33);
         color: whitesmoke;
       }
-      
+
       #content {
         height: 100%;
         width: 100%;
       }
 
       /* 969696969696969696969696969696969696969696969696969696 */
-      
+
       header {
         display: grid;
         padding-top: 1rem;
@@ -273,11 +277,11 @@
       }
 
       header #cyclone-c-logo-container {
-        position: relative; 
+        position: relative;
       }
 
       header #cyclone-c-logo-container img {
-        filter: drop-shadow(0 0 9px #25f8e7 ); /* var(--neon-blue) */
+        filter: drop-shadow(0 0 9px #25f8e7); /* var(--neon-blue) */
         width: 55vw;
       }
 
@@ -293,18 +297,18 @@
 
       main h2 {
         color: black;
-        font-family: "Gasoek One", monospace;
+        font-family: 'Gasoek One', monospace;
         text-transform: uppercase;
         font-size: clamp(3rem, 9vw, 6rem);
         margin-bottom: 1rem;
+        margin-inline: 1.5rem;
         text-shadow: 0 0 9px #25f8e7; /* var(--neon-blue) */
       }
 
       main #form-data-ul {
         border-radius: 40px;
         background: #212121;
-        box-shadow: inset 10px 10px 20px #181818,
-          inset -10px -10px 20px #2a2a2a;
+        box-shadow: inset 10px 10px 20px #181818, inset -10px -10px 20px #2a2a2a;
         display: flex;
         flex-direction: column;
         list-style-type: none;
@@ -312,7 +316,7 @@
         padding: 1.5rem;
         row-gap: 1rem;
       }
-      
+
       main #form-data-ul .field-li:not(:last-of-type) {
         border-bottom: 1px dotted silver;
         border-color: #25f8e7;
@@ -326,22 +330,22 @@
 
       main #form-data-ul .field-name-container span {
         display: inline-block;
-        font-family: "Pixelify Sans", monospace;
+        font-family: 'Pixelify Sans', monospace;
         font-size: clamp(1rem, 2.1vw, 1.313rem);
       }
 
       main #form-data-ul .field-name-container span::before {
-        content: "⦖ ";
+        content: '⦖ ';
       }
 
       main #form-data-ul .field-name-container span::after {
-        content: ":";
+        content: ':';
       }
 
       main #form-data-ul .value-container {
         position: relative;
       }
-      
+
       main #form-data-ul .value-container span {
         vertical-align: 6px;
       }
@@ -357,11 +361,10 @@
       }
 
       footer #footer-text-container {
-        position: relative; 
+        position: relative;
       }
 
       footer #footer-text-container p {
-
         font-size: clamp(0.625rem, 1vw, 0.813rem);
         text-align: center;
       }
@@ -384,132 +387,71 @@
     </style>
   </head>
   <body>
-    <script>
-      let s3Bucket = {
-        cycloneCLogo: 'https://cyclone-studios.s3.us-east-2.amazonaws.com/s3_cyclone-studios/alphaLogos/cycloneC/animated/gif+files/realistic-black-outline.gif',
-        cycloneStudiosLogo: 'https://cyclone-studios.s3.us-east-2.amazonaws.com/s3_cyclone-studios/alphaLogos/cycloneStudios/cycloneStudios.svg',
-      };
-
-      let formData = {
-        name: 'John Cloud',
-        email: 'johndoe@example.com',
-        phone: '' || 'n/a', // ? if phone number is not provided
-        collective_type: 'Sports/E-Sports Team',
-        garment_type: 'Crewneck T-Shirt',
-        color: 'Black',
-        quantity: 8,
-        vision:
-          'I would like t-shirts with a logo like Supreme New Yorks Box Logo but I want the logo to be spray-painted across with the word "Team" over the logo but not completely covering it. I need the logo to be at the center of the chest just like the original Supreme box logo.',
-      };
-
-      function renderHTML(formData, s3Bucket) {
-        const createHeader = (s3Bucket) => {
-          const logo = document.createElement('img');
-          logo.src = s3Bucket.cycloneCLogo;
-
-          const cycloneCLogoContainer = document.createElement('div');
-          cycloneCLogoContainer.setAttribute('id', 'cyclone-c-logo-container');
-          cycloneCLogoContainer.appendChild(logo);
-
-          const header = document.createElement('header');
-          header.appendChild(cycloneCLogoContainer);
-
-          return header;
-        };
-
-        const createMain = (formData) => {
-          const createUL = (formData) => {
-            const createULContent = (formData) => {
-              const createLI = (fieldName, value) => {
-                const fieldNameText = document.createElement('span');
-                fieldNameText.textContent = fieldName;
-
-                const fieldNameContainer = document.createElement('div');
-                fieldNameContainer.classList.add('field-name-container');
-                fieldNameContainer.appendChild(fieldNameText);
-
-                const valueText = document.createElement('span');
-                valueText.textContent = value;
-
-                const valueContainer = document.createElement('div');
-                valueContainer.classList.add('value-container');
-                valueContainer.appendChild(valueText);
-
-                const li = document.createElement('li');
-                li.classList.add('field-li');
-                li.append(fieldNameContainer, valueContainer);
-
-                return li;
-              };
-
-              const fieldListFragment = document.createDocumentFragment();
-
-              for (const fieldListItem of Object.entries(formData)) {
-                const [fieldName, value] = fieldListItem;
-                console.log(fieldName, value);
-                const li = createLI(fieldName, value);
-
-                fieldListFragment.append(li);
-              }
-
-              return fieldListFragment;
-            };
-
-            const ul = document.createElement('ul');
-            ul.setAttribute('id', 'form-data-ul');
-            ul.appendChild(createULContent(formData));
-
-            return ul;
-          };
-
-          const heading = document.createElement('h2');
-          heading.textContent = 'New Order Request Zaddy:';
-
-          const main = document.createElement('main');
-          main.appendChild(heading);
-
-          main.append(createUL(formData));
-          return main;
-        };
-
-        const createFooter = (s3Bucket) => {
-          const footerTextOne = document.createElement('p');
-          footerTextOne.textContent = `\u00A9 ${new Date().getFullYear()} Collective Cloth.`;
-
-          const footerTextTwo = document.createElement('p');
-          footerTextTwo.textContent = 'All rights reserved.';
-
-          const footerTextContainer = document.createElement('div');
-          footerTextContainer.setAttribute('id', 'footer-text-container');
-          footerTextContainer.append(footerTextOne, footerTextTwo);
-
-          const cycloneLogo = document.createElement('img');
-          cycloneLogo.setAttribute('id', 'cyclone-logo');
-          cycloneLogo.src = s3Bucket.cycloneStudiosLogo;
-
-          const cycloneLogoContainer = document.createElement('div');
-          cycloneLogoContainer.setAttribute('id', 'cyclone-logo-container');
-          cycloneLogoContainer.appendChild(cycloneLogo);
-
-          const footer = document.createElement('footer');
-          footer.append(footerTextContainer, cycloneLogoContainer);
-
-          return footer;
-        };
-
-        const content = document.createElement('content');
-        content.setAttribute('id', 'content');
-
-        content.append(
-          createHeader(s3Bucket),
-          createMain(formData),
-          createFooter(s3Bucket)
-        );
-
-        document.body.appendChild(content);
-      }
-
-      renderHTML(formData, s3Bucket);
-    </script>
+    <content id="content">
+      <header>
+        <div id="cyclone-c-logo-container">
+          <img
+            src="https://cyclone-studios.s3.us-east-2.amazonaws.com/s3_cyclone-studios/           alphaLogos/cycloneC/animated/gif+files/realistic-black-outline.gif"
+          />
+        </div>
+      </header>
+      <main>
+        <h2>New Order Request Zaddy:</h2>
+        <ul id="form-data-ul">
+          <li class="field-li">
+            <div class="field-name-container"><span>name</span></div>
+            <div class="value-container"><span>John Cloud</span></div>
+          </li>
+          <li class="field-li">
+            <div class="field-name-container"><span>email</span></div>
+            <div class="value-container"><span>johndoe@example.com</span></div>
+          </li>
+          <li class="field-li">
+            <div class="field-name-container"><span>phone</span></div>
+            <div class="value-container"><span>n/a</span></div>
+          </li>
+          <li class="field-li">
+            <div class="field-name-container"><span>collective_type</span></div>
+            <div class="value-container"><span>Sports/E-Sports Team</span></div>
+          </li>
+          <li class="field-li">
+            <div class="field-name-container"><span>garment_type</span></div>
+            <div class="value-container"><span>Crewneck T-Shirt</span></div>
+          </li>
+          <li class="field-li">
+            <div class="field-name-container"><span>color</span></div>
+            <div class="value-container"><span>Black</span></div>
+          </li>
+          <li class="field-li">
+            <div class="field-name-container"><span>quantity</span></div>
+            <div class="value-container"><span>8</span></div>
+          </li>
+          <li class="field-li">
+            <div class="field-name-container"><span>vision</span></div>
+            <div class="value-container">
+              <span
+                >I would like t-shirts with a logo like Supreme New Yorks Box
+                Logo but I want the logo to be spray-painted across with the
+                word "Team" over the logo but not completely covering it. I need
+                the logo to be at the center of the chest just like the original
+                Supreme box logo.</span
+              >
+            </div>
+          </li>
+        </ul>
+      </main>
+      <footer>
+        <div id="footer-text-container">
+          <p>© 2024 Collective Cloth.</p>
+          <p>All rights reserved.</p>
+        </div>
+        <div id="cyclone-logo-container">
+          <img
+            id="cyclone-logo"
+            src="https://cyclone-studios.s3.us-east-2.amazonaws.com/            s3_cyclone-studios/alphaLogos/cycloneStudios/cycloneStudios.svg"
+          />
+        </div>
+      </footer>
+    </content>
   </body>
 </html>
