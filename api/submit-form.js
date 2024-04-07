@@ -23,10 +23,8 @@ sgMail
 export default async (req, res) => {
   if (req.method === 'POST') {
     try {
-      const htmlContent = path.join(__dirname, '..', 'templates', 'email.html');
       const sendEmailWithHtmlFile = async (toEmail, fromEmail, subject, htmlFilePath) => {
         try {
-          
           const message = {
             to: toEmail,
             from: fromEmail,
@@ -40,6 +38,7 @@ export default async (req, res) => {
           console.error('Error sending email:', error);
         }
       }; 
+      const htmlContent = path.join(__dirname, '..', 'templates', 'email.html');
 
       const {
         name,
@@ -52,7 +51,7 @@ export default async (req, res) => {
         vision
       } = req.body;
 
-      // Log the received data to the console (for demonstration purposes)
+      // ? Log the received data to the console (for demonstration purposes)
       console.log('Received data:', {
         name,
         email,
@@ -64,27 +63,17 @@ export default async (req, res) => {
         vision
       });
 
-      // > --------------------------------------------------------------
-
-      // 💭 USAGE OF FUNC EXP:
       sendEmailWithHtmlFile('test@example.com', 'your-email@example.com', 'Sending with SendGrid is Fun', './path/to/your-file.html');
 
-      // > --------------------------------------------------------------
-      
-      // Here you could add additional logic such as:
-      // - Validating the data
-      // - Saving the data to a database
-      // - Sending an email confirmation
-
-      // Respond with a success message
+      // ? Respond with a success message
       res.status(200).json({ status: 'success', message: 'Data received and processed' });
     } catch (error) {
-      // Handle any errors that occur during the process
+      // ? Handle any errors that occur during the process
       console.error('Error processing request:', error);
       res.status(500).json({ status: 'error', message: 'Internal Server Error' });
     }
   } else {
-    // If the request method is not POST, return a 405 Method Not Allowed error
+    // ? If the request method is not POST, return a 405 Method Not Allowed error
     res.setHeader('Allow', ['POST']);
     res.status(405).end('Method Not Allowed');
   }
