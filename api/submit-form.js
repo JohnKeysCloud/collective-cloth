@@ -23,8 +23,7 @@ sgMail
 export default async (req, res) => {
   if (req.method === 'POST') {
     try {
-
-      const filePath = path.join(__dirname, '..', 'templates', 'email.html');
+      const htmlContent = path.join(__dirname, '..', 'templates', 'email.html');
       const sendEmailWithHtmlFile = async (toEmail, fromEmail, subject, htmlFilePath) => {
         try {
           
