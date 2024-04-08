@@ -1,4 +1,4 @@
-import sgMail from '../node_modules/@sendgrid/mail';
+import sgMail from '@sendgrid/mail';
 import { createEmailMarkup } from '../templates/create-email-html';
 
 // Assuming you've set your SendGrid API key in your environment variables

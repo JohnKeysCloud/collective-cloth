@@ -35,7 +35,8 @@
     "date-fns": "^3.0.6",
     "hover.css": "^2.3.2",
     "mini-css-extract-plugin": "^2.7.6",
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.13",
+    "path-browserify": "^1.0.1"
   },
   "main": "webpack.config.js",
   "description": ""

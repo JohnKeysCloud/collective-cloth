@@ -71,7 +71,7 @@ module.exports = (env, argv) => {
         filename: 'index.html',
         inject: 'head',
         scriptLoading: 'defer',
-        hash: false, // add hash to the file so filename is different on every build
+        hash: true, // add hash to the file so filename is different on every build
         minify: {
           collapseWhitespace: isProduction ? true : false,
           removeComments: isProduction ? true : false,
@@ -99,5 +99,11 @@ module.exports = (env, argv) => {
       open: true, // open browser on server start
     },
     devtool: 'inline-source-map',
+    resolve: {
+      fallback: {
+        "fs": false, // tell webpack to return an empty module for 'fs'
+        "path": require.resolve("path-browserify"),
+      },
+    }
   };
 };
