@@ -87,8 +87,12 @@ module.exports = (env, argv) => {
       new CopyWebpackPlugin({
         patterns: [
           {
-            from: path.resolve(__dirname, 'api'),
+            from: path.resolve(__dirname, 'src/api'),
             to: path.resolve(__dirname, 'dist/api')
+          },
+          {
+            from: path.resolve(__dirname, 'src/templates'),
+            to: path.resolve(__dirname, 'dist/templates')
           }
         ]
       })
@@ -107,3 +111,10 @@ module.exports = (env, argv) => {
     }
   };
 };
+
+
+// /usr/local/lib/node_modules
+// /Users/JohnKeysCloud / lib
+
+// html - minifier--collapse - whitespace--minify - js--minify - css--remove - comments - o dist / path / to / minified.html src / path / to / original.html
+

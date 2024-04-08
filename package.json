@@ -8,6 +8,7 @@
     "dev": "webpack --progress --mode=development",
     "serve": "webpack serve --progress",
     "watch-sass": "sass --watch ./src/sass/main.scss:./src/css/styles.css",
+    "minifyhtml": "./_shells/minifyhtml.sh",
     "gitpush": "./_shells/gitpush.sh",
     "gitpushnode": "node ./_shells/gitpush.js"
   },
