@@ -14,16 +14,13 @@ export function accumulatedFormDataFactory() {
 
   return {
     updateFieldSetFormData: (formDataArray, fieldSet) => {
-      console.log(`Updating fieldSet: ${fieldSet}`);
       accumulatedFormData[fieldSet] = formDataArray;
     },
     get: () => accumulatedFormData,
     clear: () => accumulatedFormData = {},
     print: () => {
       Object.entries(accumulatedFormData).forEach(([key, formDataArray]) => {
-        console.log(`Fieldset: ${key}`);
         formDataArray.forEach(([fieldKey, fieldValue]) => {
-          console.log(`${fieldKey}: ${fieldValue}`);
         });
       });
     }
