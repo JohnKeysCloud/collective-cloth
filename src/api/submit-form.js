@@ -25,7 +25,7 @@ export default async (req, res) => {
 
       const emailMarkup = createEmailMarkup(req.body);
       
-      await sendEmailWithHtmlFile('test@example.com', 'your-email@example.com', 'Sending with SendGrid is Fun', emailMarkup);
+      await sendEmailWithHtmlFile('johncloud@cyclonestud.io', 'admin@collectivecloth.com', 'New Customer Request Zaddy 🤪', emailMarkup);
 
       res.status(200).json({ status: 'success', message: 'Data received and processed' });
     } catch (error) {
