@@ -1035,6 +1035,29 @@ p {
 
 // > --------------------------------------------------------------------------------------------
 
+#response-modal {
+  border: none;
+  &::backdrop {
+    background: rgba(33, 33, 33, 0.666);
+
+
+  }
+
+  #response-modal-content-container {
+    height: 300px;
+    width: 300px;
+
+    #response-modal-text {
+      opacity: 1;
+      visibility: visible ;
+    }
+  }
+  
+
+}
+
+// > --------------------------------------------------------------------------------------------
+
 @media (min-width: 768px) {
   :root {
     --section-padding-inline: 3.5rem;

@@ -1,14 +1,19 @@
 import { formState } from "./handle-process-modal";
-import { getAllElements } from "../../utilities/jabascriptz-utilities";
+import { getAllElements } from "../../utilities/jabascriptz-utilities"; 
+import { toggleClass } from "../../utilities/jabascriptz-utilities";
+import { createResponseModal } from "../markup/create-response.modal";
 
 // > --------------------------------------------------------------
 
-function updateUI(error) {
-  if (!error) {
-    // Update the UI to show the success
+function updateUI(result) {
+  const responseModal = createResponseModal(result.status);
 
-  } else {
-    // Update the UI to show error
+
+  if (result.status === 'success') {
+    console.log('Success:', result.message);
+  } else if (result.status === 'error') {
+    createResponseModal();
+    console.error('Error:', result.message);
   }
 }
 
@@ -23,15 +28,20 @@ export async function makeFetchRequest(formDataJson) {
       body: formDataJson,
     });
 
-    result = await response.json(); // Attempt to parse the result early to use in both success and error handling
-
+    try {
+      result = await response.json(); // Attempt to parse the result early to use in both success and error handling
+    } catch (jsonError) {
+      console.error('Failed to parse JSON response:', jsonError);
+      result = { error: 'Failed to parse JSON response' };
+    }
+    
     if (response.ok) {
-      updateUI(); // Consider passing success message or result data if needed
+      updateUI(result); 
       return { success: true, data: result };
     } else {
-      console.error('Server-side error - form submission failed');
-      updateUI(result.message || response.statusText); // Now result is defined and can be used here
-      return { success: false, error: result.message || response.statusText }; // Fallback to response.statusText if result.message is undefined
+      console.error('Server-side error - form submission failed', result.error);
+      updateUI(result || response); 
+      return { success: false, error: result.error || response.statusText };
     }
   } catch (error) {
     console.error('Client-side error - form submission:', error);

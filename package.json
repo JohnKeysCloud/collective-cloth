@@ -10,7 +10,8 @@
     "watch-sass": "sass --watch ./src/sass/main.scss:./src/css/styles.css",
     "minifyhtml": "./_shells/minifyhtml.sh",
     "gitpush": "./_shells/gitpush.sh",
-    "gitpushnode": "node ./_shells/gitpush.js"
+    "gitpushnode": "node ./_shells/gitpush.js",
+    "vercel": "npm run dev && vercel dev"
   },
   "keywords": [],
   "author": "cycl0n3",

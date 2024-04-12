@@ -1,7 +1,6 @@
 import sgMail from '@sendgrid/mail';
 import { createEmailMarkup } from '../templates/create-email-html';
 
-// Assuming you've set your SendGrid API key in your environment variables
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export default async (req, res) => {
@@ -19,7 +18,7 @@ export default async (req, res) => {
           console.log('Email Sent');
         } catch (error) {
           console.error('Error sending email:', error);
-          throw error; // Rethrow the error to be caught by the outer try-catch
+          throw error; 
         }
       };
 
