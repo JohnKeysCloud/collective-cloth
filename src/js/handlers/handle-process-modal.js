@@ -1,46 +1,48 @@
 import { addListener, getAllElements, removeListener, setDisabledState, toggleClass } from "../../utilities/jabascriptz-utilities";
 import { createFormState } from "../factories";
-import { dialogElements } from "../cache/dialog-elements-and-utilties";
+import { processDialogElements } from "../cache/dialog-elements-and-utilties";
 import { handleDialogButtons } from './handle-dialog-buttons';
 import { swapFieldSet, toggleTextAreaComponents } from "../cache/dialog-elements-and-utilties";
 import { togglePhoneInputSanitizationListener } from './handle-telephone-input-sanitization';
 
 // > --------------------------------------------------------------
 
+// TODO: make this module generic/modular so it can be used for the 
+
 const formState = createFormState();
 
 function resetModal() {
   const resetCharacterCount = () => {
-    dialogElements.characterCount().textContent = '0/99'
+    processDialogElements.characterCount().textContent = '0/99'
   };
 
   const currentFieldSet = formState.getCurrentFieldSet();
 
-  dialogElements.form().reset();
+  processDialogElements.form().reset();
   resetCharacterCount();
 
   if (currentFieldSet !== 1) {
     const resetNavigationButtons = () => {
-      setDisabledState(dialogElements.previousButton(), true);
-      setDisabledState(dialogElements.nextButton(), false);
+      setDisabledState(processDialogElements.previousButton(), true);
+      setDisabledState(processDialogElements.nextButton(), false);
     }
 
     resetNavigationButtons();
     swapFieldSet(currentFieldSet, 1);
 
     if (currentFieldSet === 3) {
-      setDisabledState(dialogElements.submitButton(), true);
+      setDisabledState(processDialogElements.submitButton(), true);
     }
   }
   getAllElements('select').forEach(select => toggleClass(select, 'remove', 'valid'));
   toggleDialogTextAnimationClass();
   togglePhoneInputSanitizationListener('remove');
   toggleTextAreaComponents('disable');
-  removeListener(dialogElements.closeButton(), 'click', initiateModalClose);
+  removeListener(processDialogElements.closeButton(), 'click', initiateModalClose);
 }
 
 function closeModal() {
-  const startTheProcessModal = dialogElements.modal();
+  const startTheProcessModal = processDialogElements.modal();
 
   startTheProcessModal.classList.remove('closing');
   startTheProcessModal.removeEventListener('animationend', closeModal);
@@ -50,7 +52,7 @@ function closeModal() {
 }
 
 function initiateModalClose() {
-  const startTheProcessModal = dialogElements.modal();
+  const startTheProcessModal = processDialogElements.modal();
 
   toggleClass(
     startTheProcessModal,
@@ -78,17 +80,17 @@ function toggleDialogTextAnimationClass() {
 }
 
 function showProcessModal() {
-  const startTheProcessModal = dialogElements.modal();
+  const startTheProcessModal = processDialogElements.modal();
 
   startTheProcessModal.showModal();
 
-  dialogElements.nameField().focus();
+  processDialogElements.nameField().focus();
   togglePhoneInputSanitizationListener('add');
 
   toggleDialogTextAnimationClass();
 
-  addListener(dialogElements.closeButton(), 'click', initiateModalClose);
-  addListener(dialogElements.buttonContainer(), 'click', handleDialogButtons);
+  addListener(processDialogElements.closeButton(), 'click', initiateModalClose);
+  addListener(processDialogElements.buttonContainer(), 'click', handleDialogButtons);
 }
 
 export {

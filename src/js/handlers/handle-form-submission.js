@@ -1,13 +1,13 @@
 import { formState } from "./handle-process-modal";
 import { getAllElements } from "../../utilities/jabascriptz-utilities"; 
-import { toggleClass } from "../../utilities/jabascriptz-utilities";
-import { createResponseModal } from "../markup/create-response.modal";
+import { getController } from "../meta/controllers";
 
 // > --------------------------------------------------------------
 
-function updateUI(result) {
-  const responseModal = createResponseModal(result.status);
 
+function updateUI(result) {
+  const responseDialogController = getController('responseModal');
+  responseDialogController.openDialog();
 
   if (result.status === 'success') {
     console.log('Success:', result.message);

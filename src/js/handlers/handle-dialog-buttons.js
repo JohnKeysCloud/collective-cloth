@@ -1,7 +1,7 @@
 import { addListener, getAllElements, removeListener, setDisabledState, toggleClass } from "../../utilities/jabascriptz-utilities";
 import { accumulatedFormDataFactory } from "../factories";
 import { collectFormData, getFormattedFormData, makeFetchRequest } from "./handle-form-submission";
-import { dialogElements, swapFieldSet, toggleTextAreaComponents } from "../cache/dialog-elements-and-utilties";
+import { processDialogElements, swapFieldSet, toggleTextAreaComponents } from "../cache/dialog-elements-and-utilties";
 import { formState } from "./handle-process-modal";
 import { togglePhoneInputSanitizationListener } from "./handle-telephone-input-sanitization";
 import { toggleSelectPlaceholderChangeListener } from "./handle-select-place-holders";
@@ -11,8 +11,8 @@ import { toggleSelectPlaceholderChangeListener } from "./handle-select-place-hol
 let accumulatedFormData = accumulatedFormDataFactory();
 
 function handlePreviousButtonClick(previousFieldSet, toggleTextAreaComponents) {
-  const previousButton = dialogElements.previousButton();
-  const nextButton = dialogElements.nextButton();
+  const previousButton = processDialogElements.previousButton();
+  const nextButton = processDialogElements.nextButton();
 
   swapFieldSet(previousFieldSet, formState.decrementFieldSet());
 
@@ -89,8 +89,8 @@ function handleNextButtonClick(previousFieldSet, toggleTextAreaComponents, curre
     return allFieldsetsValid;
   };
 
-  const previousButton = dialogElements.previousButton();
-  const nextButton = dialogElements.nextButton();
+  const previousButton = processDialogElements.previousButton();
+  const nextButton = processDialogElements.nextButton();
 
   if (!checkFieldSetValidity(currentFieldSetElement)) return; // TODO: add error message here
 
@@ -133,12 +133,12 @@ export function handleDialogButtons(event) {
   }
 
   const currentFieldSet = formState.getCurrentFieldSet();
-  const currentFieldSetElement = dialogElements.fieldSet(currentFieldSet);
+  const currentFieldSetElement = processDialogElements.fieldSet(currentFieldSet);
 
   const clickedButton = event.target;
-  const previousButton = dialogElements.previousButton();
-  const nextButton = dialogElements.nextButton();
-  const submitButton = dialogElements.submitButton();
+  const previousButton = processDialogElements.previousButton();
+  const nextButton = processDialogElements.nextButton();
+  const submitButton = processDialogElements.submitButton();
 
   if (clickedButton === nextButton) {
     handleNextButtonClick(currentFieldSet, toggleTextAreaComponents, currentFieldSetElement);

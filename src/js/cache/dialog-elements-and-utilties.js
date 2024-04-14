@@ -2,7 +2,7 @@ import { getElement, toggleClass, addListener, removeListener, setDisabledState 
 import { formState } from "../handlers/handle-process-modal";
 import { handleTextAreaCharacterCount } from "../handlers/handle-text-area-character-count";
 
-export const dialogElements = {
+export const processDialogElements = {
   form: () => getElement('#start-the-process-form'),
   stepNumber: () => getElement('#step-number'),
   characterCount: () => getElement('#character-count'),
@@ -18,16 +18,16 @@ export const dialogElements = {
 };
 
 export const swapFieldSet = (oldFieldSet, newFieldSet) => {
-  const setStepNumber = (number) => dialogElements.stepNumber().textContent = `Step ${number}`;
+  const setStepNumber = (number) => processDialogElements.stepNumber().textContent = `Step ${number}`;
 
   toggleClass(
-    dialogElements.fieldSet(oldFieldSet),
+    processDialogElements.fieldSet(oldFieldSet),
     'remove',
     'active'
   );
 
   toggleClass(
-    dialogElements.fieldSet(newFieldSet),
+    processDialogElements.fieldSet(newFieldSet),
     'add',
     'active'
   );
@@ -37,8 +37,8 @@ export const swapFieldSet = (oldFieldSet, newFieldSet) => {
 };
 
 export const toggleTextAreaComponents = (action) => {
-  const textArea = dialogElements.textArea();
-  const characterCount = dialogElements.characterCount();
+  const textArea = processDialogElements.textArea();
+  const characterCount = processDialogElements.characterCount();
 
   if (action === 'enable') {
     toggleClass(
@@ -54,7 +54,7 @@ export const toggleTextAreaComponents = (action) => {
         'valid'
       );
 
-      setDisabledState(dialogElements.submitButton(), false);
+      setDisabledState(processDialogElements.submitButton(), false);
     }
 
     addListener(textArea, 'input', handleTextAreaCharacterCount);
@@ -70,7 +70,7 @@ export const toggleTextAreaComponents = (action) => {
       'valid'
     )
 
-    setDisabledState(dialogElements.submitButton(), true);
+    setDisabledState(processDialogElements.submitButton(), true);
     removeListener(textArea, 'input', handleTextAreaCharacterCount);
   }
 };
