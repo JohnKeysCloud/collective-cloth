@@ -1,7 +1,7 @@
 
 
 // * CONTROLLERS
-import { getControllers } from './js/meta/get-controllers.js';
+import { getControlledElements } from './js/meta/get-controllers.js';
 
 // * HANDLERS
 import { handleInitialDOMInteractivity } from './js/meta/handle-initial-dom-interactivity.js';
@@ -14,19 +14,19 @@ import { modifyDOM } from './js/meta/modify-dom.js';
 
 // > --------------------------------------------------------------
 
-let controllers;
+let controlledElements;
 
 function appInit() {
   createDOM();
   modifyDOM();
   handleInitialDOMInteractivity();
-  controllers = getControllers();
+  controlledElements = getControlledElements();
 }
 
 // 💭 pressStart
 appInit(); // 🚀
 
-export { controllers };
+export { controlledElements };
 
 // > --------------------------------------------------------------
 

@@ -10,7 +10,7 @@ export const processDialogElements = {
   previousButton: () => getElement('#previous-button'),
   nextButton: () => getElement('#next-button'),
   modal: () => getElement('#start-the-process-dialog'),
-  closeButton: () => getElement('#dialog-close-button'),
+  closeButton: () => getElement('#process-dialog-close-button'),
   buttonContainer: () => getElement('#dialog-button-container'),
   fieldSet: (num) => getElement(`[data-field-set="${num}"]`),
   textArea: () => getElement('textarea'),

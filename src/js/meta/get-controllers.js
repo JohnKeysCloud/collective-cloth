@@ -2,13 +2,16 @@ import { createDialogController } from "../../utilities/displayStuff";
 
 // 💭 --------------------------------------------------------------
 
-export function getControllers() {
-  let controllers = {};
+export function getControlledElements() {
+  let controlledElements = {};
 
   const responseModal = document.getElementById('response-dialog');
-  controllers.responseModal = createDialogController(responseModal);
+  controlledElements.responseModal = {
+    element: responseModal,
+    controller: createDialogController(responseModal)
+  };
 
-  // ? add more controllers here
+  // ? add more controlled elements here
 
-  return controllers;
+  return controlledElements;
 }

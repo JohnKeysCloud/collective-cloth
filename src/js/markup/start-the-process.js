@@ -144,7 +144,7 @@ function createFormDialog(formJson) {
   stepNumber.textContent = 'Step 1';
 
   const dialogCloseButton = document.createElement('button');
-  dialogCloseButton.setAttribute('id', 'dialog-close-button');
+  dialogCloseButton.setAttribute('id', 'process-dialog-close-button');
   dialogCloseButton.setAttribute('type', 'button');
   dialogCloseButton.setAttribute('aria-label', 'Close Dialog');
   dialogCloseButton.textContent = '✕';

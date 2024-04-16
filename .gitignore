@@ -1,6 +1,7 @@
 /node_modules
 /_shells
 /_vs-emmet
+/_s3-static-assets
 todo.md
 /vercel
 .vercel

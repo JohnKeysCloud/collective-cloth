@@ -1,5 +1,7 @@
 import { createImage } from '../../utilities/markdown/create-image';
 
+import callToActionImageOne from '../../json/call-to-action.json' with { type: 'json' };
+
 // > --------------------------------------------------------------
 
 // > --------------------------------------------------------------
@@ -69,12 +71,12 @@ function createCallToActionRight() {
   const callToActionRight = document.createElement('div');
   callToActionRight.setAttribute('id', 'call-to-action-right');
 
-  // src, id, classNames, alt, ariaLabel;
+  // ? src, id, classNames, alt, ariaLabel;
   const callToActionImage = createImage(
-    'https://collective-cloth.s3.us-east-2.amazonaws.com/static-assets/product_images/animated/team-capsule-large-animated.webp',
+    callToActionImageOne[0].src,
     'call-to-action-product-image',
     '',
-    '3-Dimensional Product Showcase',
+    callToActionImageOne[0].alt,
     '3-Dimensional Product Showcase',
     ['800', '800']
   );

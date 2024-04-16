@@ -1,0 +1,12 @@
+[
+  {
+    "id": "success",
+    "src": "https://collective-cloth.s3.us-east-2.amazonaws.com/_s3-static-assets/media/images/response-bots/successBot.gif",
+    "alt": "Success Bot"
+  },
+  { 
+    "id": "error",
+    "src": "https://collective-cloth.s3.us-east-2.amazonaws.com/_s3-static-assets/media/images/response-bots/errorBot.gif",
+    "alt": "Error Bot"
+  }
+]

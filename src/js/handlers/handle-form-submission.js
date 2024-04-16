@@ -1,24 +1,11 @@
 import { formState } from "./handle-process-modal";
 import { getAllElements } from "../../utilities/jabascriptz-utilities"; 
-import { getController } from "../meta/controllers";
+import { updateUIPostSubmission } from "../modifiers/modify-ui";
 
-// > --------------------------------------------------------------
-
-
-function updateUI(result) {
-  const responseDialogController = getController('responseModal');
-  responseDialogController.openDialog();
-
-  if (result.status === 'success') {
-    console.log('Success:', result.message);
-  } else if (result.status === 'error') {
-    createResponseModal();
-    console.error('Error:', result.message);
-  }
-}
+// 💭 --------------------------------------------------------------
 
 export async function makeFetchRequest(formDataJson) {
-  let result; // Define result outside so it's accessible throughout the function
+  let result; 
   try {
     const response = await fetch('/api/submit-form', {
       method: 'POST',
@@ -29,24 +16,34 @@ export async function makeFetchRequest(formDataJson) {
     });
 
     try {
-      result = await response.json(); // Attempt to parse the result early to use in both success and error handling
+      result = await response.json(); 
     } catch (jsonError) {
       console.error('Failed to parse JSON response:', jsonError);
-      result = { error: 'Failed to parse JSON response' };
+      result = { status: 'error', message: 'Failed to parse JSON response' };
+      updateUIPostSubmission(result); 
+      return { success: false, error: jsonError.message };
     }
     
-    if (response.ok) {
-      updateUI(result); 
+    if (response.status === 200) {
+      updateUIPostSubmission(result); 
       return { success: true, data: result };
+    } else if (response.status === 400) {
+      console.error('Request error:', result.error);
+      updateUIPostSubmission({ status: 'error', message: 'Invalid request sent' });
+      return { success: false, error: 'Invalid request' };
     } else {
-      console.error('Server-side error - form submission failed', result.error);
-      updateUI(result || response); 
-      return { success: false, error: result.error || response.statusText };
+      console.error('Unexpected response status:', response.status);
+      updateUIPostSubmission({ status: 'error', message: 'An unexpected error occurred' });
+      return { success: false, error: response.statusText };
     }
   } catch (error) {
     console.error('Client-side error - form submission:', error);
-    updateUI(error.message);
-    return { success: false, error: error.message };
+    let errorMessage = error.message;
+    if (error.message.includes('NetworkError')) {
+      errorMessage = 'Please check your internet connection and try again.';
+    }
+    updateUIPostSubmission(error.message);
+    return { success: false, error: errorMessage };
   }
 }
 
@@ -73,9 +70,9 @@ export function collectFormData(currentFieldSetElement) {
   const fields = getAllElements('input, select, textarea', currentFieldSetElement);
 
   const formDataForCurrentFieldset = Array.from(fields)
-    .filter(field => field.name) // Filter out fields without names
+    .filter(field => field.name) // ? Filter out fields without names
     .map(field => {
-      // Trim the value for inputs and textareas; leave others as is
+      // ? Trim the value for inputs and textareas; leave others as is
       const valueToUse = (field.tagName === 'INPUT' || field.tagName === 'TEXTAREA') ? field.value.trim() : field.value;
       return [field.name, valueToUse];
     });

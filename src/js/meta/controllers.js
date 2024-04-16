@@ -1,7 +1,7 @@
-import { controllers } from "../../app";
+import { controlledElements } from "../../app";
 
 // 💭 --------------------------------------------------------------
 
-export function getController(controllerName) {
-  return controllers[controllerName];
+export function getControlledElement(elementName) {
+  return controlledElements[elementName];
 }
