@@ -1,13 +1,12 @@
-import { getControlledElement } from "../meta/controllers";
+import { projectControlledElements } from '../meta/controllers';
 import { processDialogElements } from "../cache/dialog-elements-and-utilties";
 import responseBots from '../../json/response-bots.json' with { type: 'json' };
 
 // 💭 --------------------------------------------------------------
 
 export function updateUIPostSubmission(result) {
-  const responseDialogControlledObject = getControlledElement('responseModal');
-  const responseDialogElement = responseDialogControlledObject.element;
-  const responseDialogController = responseDialogControlledObject.controller;
+  const responseDialogElement = projectControlledElements.getControlledElement('responseModal');
+  const responseDialogController = projectControlledElements.getControlledElementController('responseModal');
 
   const responseDialogHeading = responseDialogElement.querySelector('#response-dialog-heading');
   const responseDialogParagraph = responseDialogElement.querySelector('#response-dialog-paragraph');

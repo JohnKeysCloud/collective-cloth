@@ -49,7 +49,7 @@ function initializeAsModal(modalElement) {
 // > --------------------------------------------------------------
 
 
-// 💭 createDialogController
+// 💭 dsCreateDialogController
 // 💭 --------------------------------------------------------------
 
 /**
@@ -73,7 +73,7 @@ function initializeAsModal(modalElement) {
  * 
  * @example
  * ? Assume 'myDialog' is a DOM element representing the dialog.
- * const dialogController = createDialogController(myDialog);
+ * const dialogController = dsCreateDialogController(myDialog);
  * 
  * ? To open the dialog
  * dialogController.openDialog();
@@ -82,10 +82,10 @@ function initializeAsModal(modalElement) {
  * dialogController.closeDialog();
  */
 
-export function createDialogController(dialogElement) {
+export function dsCreateDialogController(dialogElement) {
 
 	function examineArgumentOnCall(dialogElement) {
-		if (!dialogElement) throw new Error(`Invalid argument passed to createDialogController function.`);
+		if (!dialogElement) throw new Error(`Invalid argument passed to dsCreateDialogController function.`);
 		if (!(dialogElement instanceof HTMLElement)) throw new Error(`The provided argument is not a valid HTML element.`);
 		if (dialogElement.tagName !== 'DIALOG') throw new Error(`The element you passed in is not a dialog element.`);
 	}
@@ -151,7 +151,7 @@ export function createDialogController(dialogElement) {
 	}
 }
 
-// 💭 createLightboxController
+// 💭 dsCreateLightboxController
 // 💭 --------------------------------------------------------------
 
 /**
@@ -174,7 +174,7 @@ export function createDialogController(dialogElement) {
  * 
  * @example
  * ? Assume 'myLightbox' is a DOM element representing the dialog.
- * const lightBoxController = createLightboxController(myLightbox);
+ * const lightBoxController = dsCreateLightboxController(myLightbox);
  * 
  * ? To open the lightbox
  * lightBoxController.openLightbox();
@@ -184,10 +184,10 @@ export function createDialogController(dialogElement) {
  * 
  */
 
-export function createLightboxController(lightboxElement) {
+export function dsCreateLightboxController(lightboxElement) {
 
 	function examineArgumentOnCall() {
-		if (!lightboxElement) throw new Error(`Invalid argument passed to createDialogController function.`);
+		if (!lightboxElement) throw new Error(`Invalid argument passed to dsCreateDialogController function.`);
 		if (!(lightboxElement instanceof HTMLElement)) throw new Error(`The provided argument is not a valid HTML element.`);
 	}
 

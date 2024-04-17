@@ -37,6 +37,7 @@
     "date-fns": "^3.0.6",
     "hover.css": "^2.3.2",
     "mini-css-extract-plugin": "^2.7.6",
+    "mjml": "^4.15.3",
     "nodemailer": "^6.9.13",
     "path-browserify": "^1.0.1"
   },
