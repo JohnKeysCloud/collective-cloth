@@ -80,6 +80,7 @@ function createForm(formJson) {
     fieldElementContainer.classList.add('field-element-container');
     fieldElementContainer.append(input);
 
+    // ? Create a field container and set the field set associated data attribute.
     const fieldContainer = document.createElement('div');
     fieldContainer.setAttribute('id', `form-field-container-${++index}`);
     fieldContainer.classList.add('form-field-container');
@@ -90,8 +91,18 @@ function createForm(formJson) {
     } else if (field.fieldSet === 3) {
       fieldContainer.dataset.fieldSet = 3;
     }
-    fieldContainer.append(label, fieldElementContainer);
 
+    // ? Append labels. If the field is the 'vision' field, append a character requirement span as well.
+    if (field.id === 'vision') {
+      const visionCharacterRequirement = document.createElement('span');
+      visionCharacterRequirement.setAttribute('id', 'vision-character-requirement');
+      visionCharacterRequirement.textContent = '〔 99 character min. 〕';
+      fieldContainer.append(label, visionCharacterRequirement, fieldElementContainer);
+    } else {
+      fieldContainer.append(label, fieldElementContainer);
+    }
+
+    // ? Append the field container to the appropriate field set.
     if (field.fieldSet === 1) {
       fieldSetOne.appendChild(fieldContainer);
     } else if (field.fieldSet === 2) {
