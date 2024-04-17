@@ -9,104 +9,64 @@
     
     <mj-attributes>
       <mj-all 
-        font-size="12px"
         font-family="'Major Mono Display', monospace" 
+        font-size="12px"
         color="whitesmoke"
       />
-
     </mj-attributes>
     
     <mj-style>
       body {
-        font-optical-sizing: auto;
-        font-size: 12px;
         background: #212121;
-        color: #f5f5f5;
       }
 
-      .content-style {
-        height: 100%;
-        width: 100%;
-      }
-
-      .header-style {
-        display: grid;
-        padding-top: 1rem;
-        place-items: center;
-        padding-bottom: 1rem;
-      }
       .header-style .cyclone-c-image {
         -webkit-filter: drop-shadow(0 0 9px #25f8e7);
         filter: drop-shadow(0 0 9px #25f8e7);
-        width: 55vw;
       }
 
       .main-style {
         align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding-inline: 1rem;
-      }
-      .main-style .main-heading {
-        color: #000;
-        font-family: 'Gasoek One', monospace;
-        text-transform: uppercase;
-        padding-bottom: 1rem;
-        padding-inline: 1.5rem;
-        text-shadow: 0 0 9px #25f8e7;
-      }
-      .main-style .form-data-ul {
         border-radius: 40px;
         background: #212121;
         box-shadow: inset 10px 10px 20px #181818, inset -10px -10px 20px #2a2a2a;
-        display: flex;
-        flex-direction: column;
-        list-style-type: none;
-        padding-bottom: 3rem;
         padding: 1.5rem;
-        row-gap: 1rem;
       }
-      .main-style .form-data-ul .non-final-li {
-        border-bottom: 1px dotted silver;
-        border-color: #25f8e7;
-        gap: 1rem;
-        padding-bottom: 0.5rem;
-      }
-      .main-style .field-name {
-        font-family: 'Pixelify Sans', monospace;
-        padding-bottom: 0.5rem;
-      }
-      .main-style .field-value {
-        vertical-align: 6px;
+      
+      .main-style .main-heading {
+        text-shadow: 0 0 6px #25f8e7;
+        text-transform: uppercase;
       }
 
-      .footer-style {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 1rem;
-        row-gap: 0.5rem;
+      .main-style .field-name {
+        text-shadow: 0 0 3px whitesmoke;
       }
+      
       .footer-style .footer-text {
         text-align: center;
       }
-      .footer-style .non-final-footer-text {
-        padding-bottom: 0.5rem;
-      }
+
       .footer-style .cyclone-studios-image {
         -webkit-filter: drop-shadow(0 0 3px whitesmoke);
         filter: drop-shadow(0 0 3px whitesmoke);
-        height: auto;
-        width: 66px;
       }   
+
+      .divider {
+        -webkit-filter: drop-shadow(0 0 9px whitesmoke);
+        filter: drop-shadow(0 0 9px whitesmoke);
+      }
     </mj-style>
   </mj-head>
 
-  <mj-body css-class="content">
+  <mj-body>
     <mj-section css-class="header-style">
       <mj-column>
-        <mj-image src="https://cyclone-studios.s3.us-east-2.amazonaws.com/s3_cyclone-studios/alphaLogos/cycloneC/animated/gif+files/realistic-black-outline.gif" alt="Cyclone Studios Logo"/>
+        <mj-image 
+          alt="Cyclone Studios Logo"
+          css-class="cyclone-c-image"
+          src="https://cyclone-studios.s3.us-east-2.amazonaws.com/s3_cyclone-studios/alphaLogos/cycloneC/animated/gif+files/realistic-black-outline.gif" 
+          width='333px'
+        />
       </mj-column>
     </mj-section>
 
@@ -118,6 +78,7 @@
           css-class="main-heading" 
           font-size="36px" 
           font-family="'Gasoek One', monospace"
+          padding-bottom="36px"
         >
           New Order Request Zaddy:
         </mj-text>
@@ -133,7 +94,13 @@
         <mj-text css-class="field-value">
           ${name}
         </mj-text>
-        <mj-divider border-width="1px" border-style="ridge" border-color="#CCCCCC" />
+        <mj-divider 
+          border-color="#CCCCCC" 
+          border-style="ridge" 
+          border-width="1px"
+          css-class="divider" 
+          padding-bottom="18px"
+        />
 
         <!-- * email -->
         <mj-text
@@ -146,7 +113,13 @@
         <mj-text css-class="field-value">
           ${email}
         </mj-text>
-        <mj-divider border-width="1px" border-style="ridge" border-color="#CCCCCC" />
+        <mj-divider 
+          border-color="#CCCCCC" 
+          border-style="ridge" 
+          border-width="1px"
+          css-class="divider" 
+          padding-bottom="18px"
+        />
 
         <!-- * phone number  -->
         <mj-text 
@@ -159,7 +132,13 @@
         <mj-text css-class="field-value">
           ${phone}
         </mj-text>
-        <mj-divider border-width="1px" border-style="ridge" border-color="#CCCCCC" />
+        <mj-divider 
+          border-color="#CCCCCC" 
+          border-style="ridge" 
+          border-width="1px"
+          css-class="divider" 
+          padding-bottom="18px"
+        />
 
         <!-- * collective type  -->
         <mj-text
@@ -172,7 +151,13 @@
         <mj-text css-class="field-value">
           ${collective_type}
         </mj-text>
-        <mj-divider border-width="1px" border-style="ridge" border-color="#CCCCCC" />
+        <mj-divider 
+          border-color="#CCCCCC" 
+          border-style="ridge" 
+          border-width="1px"
+          css-class="divider" 
+          padding-bottom="18px"
+        />
 
         <!-- * garment type  -->
         <mj-text
@@ -185,7 +170,13 @@
         <mj-text css-class="field-value">
           ${garment_type}
         </mj-text>
-        <mj-divider border-width="1px" border-style="ridge" border-color="#CCCCCC" />
+        <mj-divider 
+          border-color="#CCCCCC" 
+          border-style="ridge" 
+          border-width="1px"
+          css-class="divider" 
+          padding-bottom="18px"
+        />
 
         <!-- * garment color  -->
         <mj-text
@@ -198,7 +189,13 @@
         <mj-text css-class="field-value">
           ${color}
         </mj-text>
-        <mj-divider border-width="1px" border-style="ridge" border-color="#CCCCCC" />
+        <mj-divider 
+          border-color="#CCCCCC" 
+          border-style="ridge" 
+          border-width="1px"
+          css-class="divider" 
+          padding-bottom="18px"
+        />
 
         <!-- * quantity  -->
         <mj-text
@@ -211,7 +208,13 @@
         <mj-text css-class="field-value">
           ${quantity}
         </mj-text>
-        <mj-divider border-width="1px" border-style="ridge" border-color="#CCCCCC" />
+        <mj-divider 
+          border-color="#CCCCCC" 
+          border-style="ridge" 
+          border-width="1px"
+          css-class="divider" 
+          padding-bottom="18px"
+        />
 
         <!-- * vision  -->
         <mj-text
@@ -241,6 +244,7 @@
           alt="Cyclone Studios Logo" 
           css-class="cyclone-studios-image"
           src="https://cyclone-studios.s3.us-east-2.amazonaws.com/s3_cyclone-studios/alphaLogos/cycloneStudios/cycloneStudios.svg" 
+          width="66px"
         />    
     </mj-column>     
     </mj-section>
