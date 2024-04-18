@@ -921,6 +921,10 @@ p {
               white-space: pre-wrap;
               word-wrap: break-word; /* Ensures long words do not break the layout */
 
+              option {
+                text-align: center;
+              }
+
               &::placeholder {
                 text-align: center;
               }
