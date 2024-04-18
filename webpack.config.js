@@ -77,8 +77,10 @@ module.exports = (env, argv) => {
           removeComments: isProduction ? true : false,
         },
         template: './src/index.ejs',
-        favicon: './favicon.ico'
-        
+        favicon: './favicon.ico',
+        links: [
+          { rel: 'apple-touch-icon', href: 'https://cyclone-studios.s3.us-east-2.amazonaws.com/s3_cyclone-studios/alphaLogos/cycloneFavicons/apple-touch-icon.png' },
+        ]
       }),
       new MiniCssExtractPlugin({
         filename: 'css/[name].css',
