@@ -11,6 +11,10 @@ export function updateUIPostSubmission(result) {
   const responseDialogHeading = responseDialogElement.querySelector('#response-dialog-heading');
   const responseDialogParagraph = responseDialogElement.querySelector('#response-dialog-paragraph');
   const responseDialogImage = responseDialogElement.querySelector('#response-dialog-image');
+  
+  const submitButton = processDialogElements.submitButton();
+  submitButton.classList.remove('awaiting-response');
+  submitButton.disabled = false;
 
   if (result.status === 'success') {
     responseDialogHeading.textContent = 'Submission confirmed. Please stand by for imminent contact. 💭';

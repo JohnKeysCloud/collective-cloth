@@ -788,8 +788,8 @@ p {
     #start-the-process-form {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       gap: 1.25rem;
+      justify-content: space-between;
       height: 100%;
 
       #form-field-main-container {
@@ -970,12 +970,31 @@ p {
         #submit-button {
           grid-area: submit-button;
           opacity: 1;
+          position: relative;
           visibility: visible;
-          transition: all 333ms ease-in-out;
+          transition: opacity 333ms ease-in-out, visibility 333ms ease-in-out, transform 66ms ease-in-out forwards;
+
+          &::before {
+            color: var(--neon-blue);
+            content: 'Submit';
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            text-shadow: 0 0 9px var(--neon-blue);
+            transition: opacity 222ms ease-in-out forwards;
+          }
 
           &:disabled {
             opacity: 0;
             visibility: hidden;
+          }
+
+          &.awaiting-response {
+            transform: scale(0.93);
+
+            &::before {
+              opacity: 1;
+            }
           }
         }
       }

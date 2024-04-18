@@ -145,7 +145,13 @@ export function handleDialogButtons(event) {
     handlePreviousButtonClick(currentFieldSet, toggleTextAreaComponents);
     toggleFormListeners(currentFieldSet - 1);
   } else if (clickedButton === submitButton) {
+    const notifyUserOfSubmission = () => {
+      submitButton.classList.remove('awaiting-response');
+      submitButton.disabled = true;
+    }
+
     const bodyJSON = formatDataForSubmission(event, currentFieldSetElement);
+    notifyUserOfSubmission();
     makeFetchRequest(bodyJSON);
   }
   (currentFieldSet === 1)
